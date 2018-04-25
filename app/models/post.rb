@@ -19,7 +19,8 @@ class Post
   end
 
   def self.find(id)
-
+    results = DB.exec("SELECT * FROM posts WHERE id=#{"id"};")
+    return Posts.new(results.first)
   end
 
   def self.create(opts={})
