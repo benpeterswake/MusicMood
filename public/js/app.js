@@ -1,9 +1,49 @@
 
 class PostForm extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            username: '',
+            avatar: '',
+            post: '',
+            mood: '',
+            song: ''
+        }
+    }
     render(){
         return(
             <div>
                 <h2>PostForm</h2>
+                <form>
+                  <div className="form-row">
+                    <div className="form-group col-md-6">
+                      <label for="inputUsername">Username</label>
+                      <input type="text" className="form-control" id="username" placeholder="username" />
+                    </div>
+
+                    
+                  </div>
+
+                  <div className="form-group">
+                    <label for="inputAvatar">Link to Avatar image</label>
+                    <input type="text" className="form-control" id="inputAvatarURL" placeholder="Avatar URL" />
+                  </div>
+                  <div className="form-group">
+                    <label for="postText">Post text</label>
+                    <input type="text" className="form-control" id="postText" placeholder="Post" />
+                  </div>
+
+
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" id="moods" />
+                      <label className="form-check-label" for="gridCheck">
+                        I am a mood
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" className="btn btn-primary">Submit Post</button>
+                </form>
             </div>
         )
     }
@@ -13,8 +53,19 @@ class Post extends React.Component{
     render(){
         return(
             <div>
-                <h2>Individual Post</h2>
+                <h2>Individual Post Component Working, not fully styled</h2>
+                    <div>
+                        <img src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
+                        <p> olena </p>
+                        <p> PostText </p>
+                        <p> MoodText </p>
+                        <p> Song </p>
+                    </div>
+                <h2>PostForm under here until toggle time</h2>
+                <PostForm />
+                <h3> ===end of individual post component===</h3>
             </div>
+
         )
     }
 }
@@ -23,23 +74,64 @@ class PostsList extends React.Component{
     render(){
         return(
             <div>
-                <h2>Posts List</h2>
-            </div>
+            <table className="table table-striped table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Post</th>
+                    <th scope="col">Mood</th>
+                    <th scope="col">Song</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">avatar and username</th>
+                        <td>Post text</td>
+                        <td>Mood text</td>
+                        <td>Song link or player?</td>
+                </tr>
+                <tr>
+                    <th scope="row">avatar and username</th>
+                        <td>Post text</td>
+                        <td>Mood text</td>
+                        <td>Song link or player?</td>
+                </tr>
+                <tr>
+                    <th scope="row">avatar and username</th>
+                        <td>Post text</td>
+                        <td>Mood text</td>
+                        <td>Song link or player?</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>===end of postlist component===</h3>
+                </div>
         )
     }
 }
 
 class Posts extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            postsList: true,
+            addPost: false,
+            showPost: false,
+            editPost: false,
+            posts: [],
+            post: {}
+        }
+    }
     render(){
         return (
             <div>
-                <h2>Posts</h2>
+                <h2>Posts Component working</h2>
             </div>
         )
     }
 }
 
-class Header extends React.Component {
+class Navigation extends React.Component {
   render () {
     return (
       <div>
@@ -63,7 +155,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Header />
+                <Navigation />
                 <h1>Hai frendz</h1>
                 <Posts />
                 <PostsList />
