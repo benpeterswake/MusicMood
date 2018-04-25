@@ -2,12 +2,11 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: { message: 'hi', status: 200 }
-    # render json: Posts.all
+    render json: Post.all
   end
 
   # def show
-  #   render json: Posts.find(params.["id"])
+  #   render json: Posts.find(params["id"])
   # end
   #
   # def create
