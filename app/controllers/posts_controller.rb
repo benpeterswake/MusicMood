@@ -5,20 +5,20 @@ class PostsController < ApplicationController
     render json: Post.all
   end
 
-  # def show
-  #   render json: Posts.find(params["id"])
-  # end
-  #
-  # def create
-  #   render json: Posts.create(params["posts"])
-  # end
-  #
-  # def delete
-  #   render json: Posts.delete(params["id"])
-  # end
-  #
-  # def update
-  #   render json: Posts.update(params["id"], params["posts"])
-  # end
+  def show
+    render json: Post.find(params["id"])
+  end
+
+  def create
+    render json: Post.create(params["post"])
+  end
+
+  def delete
+    render json: Post.delete(params["id"])
+  end
+
+  def update
+    render json: Post.update(params["id"], params["post"])
+  end
 
 end

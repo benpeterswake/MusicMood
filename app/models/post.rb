@@ -19,19 +19,34 @@ class Post
   end
 
   def self.find(id)
-    results = DB.exec("SELECT * FROM posts WHERE id=#{"id"};")
-    return Posts.new(results.first)
+    results = DB.exec("SELECT * FROM posts WHERE id=#{id};")
+    return Post.new(results.first)
   end
 
   def self.create(opts={})
-
+    results = DB.exec(
+      <<-SQL
+        INSERT INTO posts (username, avatar, post, mood, song)
+        VALUES ( '#{opts["username"]}','#{opts["avatar"]}','#{opts["post"]}','#{opts["mood"]}','#{opts["song"]}')
+        RETURNING id, username, avatar, post, mood, song;
+      SQL
+    )
+    return Post.new(results.first)
   end
 
   def self.delete(id)
-
+    results = DB.exec("DELETE FROM posts WHERE id=#{id}")
   end
 
   def self.update(id, opts={})
-
+    results = DB.exec(
+      <<-SQL
+        UPDATE posts
+        SET username='#{opts["username"]}', avatar='#{opts["avatar"]}',post='#{opts["post"]}',mood='#{opts["mood"]}',song='#{opts["song"]}')
+        WHERE id=#{id}
+        RETURNING id, username, avatar, post, mood, song;
+         SQL
+    )
+    return Post.new(results.first)
   end
 end
