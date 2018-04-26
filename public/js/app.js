@@ -1,4 +1,3 @@
-
 class PostForm extends React.Component{
     constructor(props){
         super(props)
@@ -20,8 +19,6 @@ class PostForm extends React.Component{
                       <label for="inputUsername">Username</label>
                       <input type="text" className="form-control" id="username" placeholder="username" />
                     </div>
-
-                    
                   </div>
 
                   <div className="form-group">
@@ -38,18 +35,38 @@ class PostForm extends React.Component{
                     <div className="form-check">
                       <input className="form-check-input" type="checkbox" id="moods" />
                       <label className="form-check-label" for="gridCheck">
-                        I am a mood
+                        Happy
                       </label>
                     </div>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit Post</button>
+
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" id="moods" />
+                      <label className="form-check-label" for="gridCheck">
+                        Sad
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" id="moods" />
+                      <label className="form-check-label" for="gridCheck">
+                        Angry
+                      </label>
+                    </div>
+                  </div>
+
+                  <button type="submit" className="btn btn-primary">Submit Post to PostsList</button>
                 </form>
             </div>
         )
     }
 }
 
-class Post extends React.Component{
+
+class ViewPost extends React.Component{
     render(){
         return(
             <div>
@@ -61,8 +78,16 @@ class Post extends React.Component{
                         <p> MoodText </p>
                         <p> Song </p>
                     </div>
-                <h2>PostForm under here until toggle time</h2>
-                <PostForm />
+
+                <button type="submit" className="btn btn-primary"> Return to all Posts </button>
+                <button type="submit" className="btn btn-primary"> Edit this Post onClick show PostForm </button>
+                    <h2>PostForm under here until toggle time</h2>
+                        <PostForm />
+                            <button type="submit" className="btn btn-primary"> Show PostsList </button>
+
+                            <button type="submit" className="btn btn-primary"> Submit Edits onClick hide PostForm </button>
+
+                            <button type="submit" className="btn btn-primary">Delete Post onClick delete</button>
                 <h3> ===end of individual post component===</h3>
             </div>
 
@@ -78,8 +103,8 @@ class PostsList extends React.Component{
                 <thead>
                 <tr>
                     <th scope="col">User</th>
-                    <th scope="col">Post</th>
-                    <th scope="col">Mood</th>
+                    <th scope="col">Post onClick ViewPost</th>
+                    <th scope="col">Mood </th>
                     <th scope="col">Song</th>
                 </tr>
                 </thead>
@@ -155,13 +180,12 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Navigation />
                 <h1>Hai frendz</h1>
+                <Navigation />
+                <PostForm />
                 <Posts />
                 <PostsList />
-                <Post />
-                <PostForm />
-
+                <ViewPost />
             </div>
         )
     }
