@@ -1,70 +1,58 @@
-// class PostForm extends React.Component{
-//     constructor(props){
-//         super(props)
-//         this.state = {
-//             username: '',
-//             avatar: '',
-//             post: '',
-//             mood: '',
-//             song: ''
-//         }
-//     }
-//     render(){
-//         return(
-//             <div className="mx-auto">
-//                 <h2>PostForm</h2>
-//                 <form>
-//                   <div className="form-row">
-//                     <div className="form-group col-md-6">
-//                       <label for="inputUsername">Username</label>
-//                       <input type="text" className="form-control" id="username" placeholder="username" />
-//                     </div>
-//                   </div>
-//                   <div className="form-row">
-//                     <div className="form-group col-md-6">
-//                       <label for="inputAvatar">Link to Avatar image</label>
-//                       <input type="text" className="form-control" id="inputAvatarURL" placeholder="Avatar URL" />
-//                     </div>
-//                   </div>
-//                   <div className="form-row">
-//                   <div className="form-group col-md-6">
-//                     <label for="postText">Post text</label>
-//                     <input type="text" className="form-control" id="postText" placeholder="Post" />
-//                   </div>
-//                   </div>
-//                   <div className="form-row">
-//                     <div className="form-group col-md-4">
-//                       <div className="form-check">
-//                         <input className="form-check-input" type="checkbox" id="moods" />
-//                         <label className="form-check-label" for="gridCheck">
-//                           Happy
-//                         </label>
-//                       </div>
-//                     </div>
-//                     <div className="form-group col-md-4">
-//                       <div className="form-check">
-//                         <input className="form-check-input" type="checkbox" id="moods" />
-//                         <label className="form-check-label" for="gridCheck">
-//                           Sad
-//                         </label>
-//                       </div>
-//                     </div>
-//                    <div className="form-group col-md-4">
-//                     <div className="form-check">
-//                       <input className="form-check-input" type="checkbox" id="moods" />
-//                       <label className="form-check-label" for="gridCheck">
-//                         Angry
-//                       </label>
-//                     </div>
-//                   </div>
-//                   </div>
-//
-//                   <button type="submit" className="btn btn-primary">Submit Post to PostsList</button>
-//                 </form>
-//             </div>
-//         )
-//     }
-// }
+class PostForm extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            username: '',
+            avatar: '',
+            post_body: '',
+            mood: '',
+            song: ''
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount(){
+      if(this.props.post){
+
+      }
+    }
+
+    handleChange(event){
+      this.setState({
+        [event.target.id]: event.target.value
+      })
+      console.log(this.state);
+    }
+
+    handleSubmit(event){
+      event.preventDefault()
+      console.log(this.state);
+      this.props.handleSubmit(this.state)
+    }
+
+    render(){
+        return(
+            <div className="col-lg-6 mx-auto">
+                <h2>Post a song</h2>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="row">
+                    <div className="col">
+                      <input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" />
+                    </div>
+                    <div className="col">
+                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Song" />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <textarea type="text" className="form-control" id="post_body" value={this.state.post_body} onChange={this.handleChange} placeholder="Your post"></textarea>
+                  </div>
+                  <button type="submit" className="btn btn-primary">Submit Post to PostsList</button>
+                </form>
+            </div>
+        )
+    }
+}
 //
 //
 // class ViewPost extends React.Component{
@@ -100,6 +88,7 @@ class PostsList extends React.Component{
     render(){
         return(
           <div className="col-lg-6 mx-auto">
+            <h2>Posts</h2>
               {
                   this.props.posts.map((post, index) => {
                     return (
@@ -133,7 +122,9 @@ class Posts extends React.Component{
             posts: [],
             post: {}
         }
-
+        this.getPosts = this.getPosts.bind(this)
+        this.handleCreate = this.handleCreate.bind(this)
+        this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
     }
 
     componentDidMount(){
@@ -150,10 +141,34 @@ class Posts extends React.Component{
       })
     }
 
+    handleCreate(post){
+      const updatePost = this.state.posts
+      updatePost.unshift(post)
+      this.setState({
+        posts: updatePost
+      })
+    }
+
+    handleCreateSubmit(post){
+      fetch('/posts', {
+        method: 'POST',
+        body: JSON.stringify(post),
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        return res.json()
+      }).then(newPost => {
+        this.handleCreate(newPost)
+        console.log(newPost)
+      }).catch(error => console.log(error))
+    }
+
     render(){
         return (
             <div>
-                <h2 className="text-center">Posts</h2>
+                <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList posts={this.state.posts}/>
             </div>
         )
