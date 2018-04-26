@@ -1,3 +1,66 @@
+class EditForm extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            username: '',
+            avatar: '',
+            post_body: '',
+            mood: '',
+            song: ''
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.submitEdit = this.submitEdit.bind(this)
+    }
+
+    componentDidMount(){
+      if(this.props.post){
+          this.setState({
+              username: this.props.post.username,
+              avatar: this.props.post.avatar,
+              post_body: this.props.post.post,
+              mood: this.props.post.mood,
+              id: this.props.post.id
+          })
+      }
+    }
+
+    handleChange(event){
+      this.setState({
+        [event.target.id]: event.target.value
+      })
+      console.log(this.state);
+    }
+
+    submitEdit(event){
+      event.preventDefault()
+      console.log(this.state);
+      this.props.handleEdit(this.state)
+    }
+
+    render(){
+        return(
+            <div className="col-lg-6 mx-auto">
+                <h2>Post a song</h2>
+                <form onSubmit={this.submitEdit}>
+                  <div className="row">
+                    <div className="col">
+                      <input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" />
+                    </div>
+                    <div className="col">
+                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Song" />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <textarea type="text" className="form-control" id="post_body" value={this.state.post_body} onChange={this.handleChange} placeholder="Your post"></textarea>
+                  </div>
+                  <button type="submit" className="btn btn-primary">Submit Post Edits</button>
+                </form>
+            </div>
+        )
+    }
+
+}
+
 class PostForm extends React.Component{
     constructor(props){
         super(props)
@@ -10,12 +73,6 @@ class PostForm extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-    }
-
-    componentDidMount(){
-      if(this.props.post){
-
-      }
     }
 
     handleChange(event){
@@ -102,6 +159,14 @@ class PostsList extends React.Component{
                             <footer class="blockquote-footer">{post.username}</footer>
                           </blockquote>
                         </div>
+
+                        <button type="button" className="btn btn-primary"
+                        onClick = {() => this.props.toggleState('editPost', index)}>Edit</button>
+
+                        {
+                            this.props.editPost === true ?
+                            <EditForm />  : ''
+                        }
                       </div>
                       )
                   })
@@ -122,9 +187,20 @@ class Posts extends React.Component{
             posts: [],
             post: {}
         }
+
+        this.toggleState = this.toggleState.bind(this)
         this.getPosts = this.getPosts.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
         this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+        this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
+    }
+
+    toggleState(post, index){
+        console.log(post, index);
+
+        this.setState({
+            [post]: !this.state[post]
+        })
     }
 
     componentDidMount(){
@@ -165,11 +241,27 @@ class Posts extends React.Component{
       }).catch(error => console.log(error))
     }
 
+    handleUpdateSubmit (post, index){
+        fetch('/posts/' + post.id, {
+            body: JSON.stringify(post),
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then(updatedPost => {
+            return updatedPost.json()
+        }).then(jsonedPost => {
+            this.getPosts()
+            this.toggleState('editPost')
+        }).catch(error => console.log(error))
+    }
+
     render(){
         return (
             <div>
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
-                <PostsList posts={this.state.posts}/>
+                <PostsList editPost = {this.state.editPost} toggleState = {this.toggleState} posts={this.state.posts}/>
             </div>
         )
     }
