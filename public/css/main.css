@@ -22,11 +22,6 @@
 
 }
 
-#PostList{
-  background-color: lightgrey;
-}
-
-
 
 @media only screen and (max-width: 1000px) {
   .column {
