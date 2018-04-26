@@ -172,6 +172,9 @@ class PostsList extends React.Component{
                             this.props.editPost === index ?
                             <EditForm handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
                         }
+
+                        <button type="button" className="btn btn-primary"
+                        onClick = {() => this.props.deletePost(post, index)}>Delete</button>
                       </div>
                       )
                   })
@@ -195,6 +198,7 @@ class Posts extends React.Component{
         this.handleCreate = this.handleCreate.bind(this)
         this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
+        this.deletePost = this.deletePost.bind(this)
     }
 
     componentDidMount(){
@@ -259,11 +263,24 @@ class Posts extends React.Component{
         }).catch(error => console.log(error))
     }
 
+    deletePost (post, index) {
+      fetch('/posts/' + post.id, {
+        method: 'DELETE'
+      }). then(data => {
+        this.setState({
+          posts: [
+            ...this.state.posts.slice(0, index),
+            ...this.state.posts.slice(index + 1)
+          ]
+        })
+      })
+    }
+
     render(){
         return (
             <div>
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
-                <PostsList handleUpdateSubmit={this.handleUpdateSubmit} post={this.state.post} editPost={this.state.editPost} toggleState={this.toggleState} posts={this.state.posts}/>
+                <PostsList handleUpdateSubmit={this.handleUpdateSubmit} post={this.state.post} editPost={this.state.editPost} toggleState={this.toggleState} posts={this.state.posts} deletePost={this.deletePost}/>
             </div>
         )
     }
