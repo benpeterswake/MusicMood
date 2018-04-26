@@ -21,7 +21,7 @@ class PostForm extends React.Component{
                       <input type="text" className="form-control" id="username" placeholder="username" />
                     </div>
 
-                    
+
                   </div>
 
                   <div className="form-group">
