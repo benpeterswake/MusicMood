@@ -1,6 +1,7 @@
 class PostsList extends React.Component{
     render(){
         return(
+          <section id="PostList">
           <div className="container">
           <div className="col-lg-6 mx-auto">
             <h2>Posts</h2>
@@ -39,6 +40,7 @@ class PostsList extends React.Component{
               }
           </div>
           </div>
+          </section>
         )
     }
 }

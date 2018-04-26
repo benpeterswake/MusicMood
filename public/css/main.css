@@ -18,8 +18,15 @@
 }
 
 .postForm{
-  padding:120px 0px 50px 0px;
+  padding:80px 0px 30px 0px;
+
 }
+
+#PostList{
+  background-color: lightgrey;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
   .column {
