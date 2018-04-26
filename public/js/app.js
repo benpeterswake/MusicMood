@@ -73,7 +73,7 @@ class ViewPost extends React.Component{
                 <h2>Individual Post Component Working, not fully styled</h2>
                     <div>
                         <img class= "post-image" src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
-                        <p> olena </p>
+                        <p> Vic </p>
                         <p> PostText </p>
                         <p> MoodText </p>
                         <p> Song </p>
