@@ -12,7 +12,7 @@ class Post
   end
 
   def self.all
-    results = DB.exec("SELECT * FROM posts;")
+    results = DB.exec("SELECT * FROM posts ORDER BY id DESC;")
     results.each do |result|
       puts result
     end

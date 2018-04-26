@@ -1,3 +1,35 @@
+//
+//
+// class ViewPost extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <h2>Individual Post Component Working, not fully styled</h2>
+//                     <div>
+//                         <img className= "post-image" src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
+//                         <p> Vic </p>
+//                         <p> PostText </p>
+//                         <p> MoodText </p>
+//                         <p> Song </p>
+//                     </div>
+//
+//                 <button type="submit" className="btn btn-primary"> Return to all Posts </button>
+//                 <button type="submit" className="btn btn-primary"> Edit this Post onClick show PostForm </button>
+//                     <h2>PostForm under here until toggle time</h2>
+//                         <PostForm />
+//                             <button type="submit" className="btn btn-primary"> Show PostsList </button>
+//
+//                             <button type="submit" className="btn btn-primary"> Submit Edits onClick hide PostForm </button>
+//
+//                             <button type="submit" className="btn btn-primary">Delete Post onClick delete</button>
+//                 <h3> ===end of individual post component===</h3>
+//             </div>
+//
+//         )
+//     }
+// }
+//
+
 class EditForm extends React.Component{
     constructor(props){
         super(props)
@@ -13,15 +45,14 @@ class EditForm extends React.Component{
     }
 
     componentDidMount(){
-      if(this.props.post){
-          this.setState({
+        this.setState({
               username: this.props.post.username,
               avatar: this.props.post.avatar,
               post_body: this.props.post.post,
               mood: this.props.post.mood,
+              song: this.props.post.song,
               id: this.props.post.id
-          })
-      }
+        })
     }
 
     handleChange(event){
@@ -34,13 +65,13 @@ class EditForm extends React.Component{
     submitEdit(event){
       event.preventDefault()
       console.log(this.state);
-      this.props.handleEdit(this.state)
+      this.props.handleUpdateSubmit(this.state)
     }
 
     render(){
         return(
-            <div className="col-lg-6 mx-auto">
-                <h2>Post a song</h2>
+            <div className="col-lg-12 mx-auto">
+                <h2>{this.state.song}</h2>
                 <form onSubmit={this.submitEdit}>
                   <div className="row">
                     <div className="col">
@@ -84,7 +115,6 @@ class PostForm extends React.Component{
 
     handleSubmit(event){
       event.preventDefault()
-      console.log(this.state);
       this.props.handleSubmit(this.state)
     }
 
@@ -110,37 +140,7 @@ class PostForm extends React.Component{
         )
     }
 }
-//
-//
-// class ViewPost extends React.Component{
-//     render(){
-//         return(
-//             <div>
-//                 <h2>Individual Post Component Working, not fully styled</h2>
-//                     <div>
-//                         <img class= "post-image" src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
-//                         <p> Vic </p>
-//                         <p> PostText </p>
-//                         <p> MoodText </p>
-//                         <p> Song </p>
-//                     </div>
-//
-//                 <button type="submit" className="btn btn-primary"> Return to all Posts </button>
-//                 <button type="submit" className="btn btn-primary"> Edit this Post onClick show PostForm </button>
-//                     <h2>PostForm under here until toggle time</h2>
-//                         <PostForm />
-//                             <button type="submit" className="btn btn-primary"> Show PostsList </button>
-//
-//                             <button type="submit" className="btn btn-primary"> Submit Edits onClick hide PostForm </button>
-//
-//                             <button type="submit" className="btn btn-primary">Delete Post onClick delete</button>
-//                 <h3> ===end of individual post component===</h3>
-//             </div>
-//
-//         )
-//     }
-// }
-//
+
 class PostsList extends React.Component{
     render(){
         return(
@@ -149,23 +149,28 @@ class PostsList extends React.Component{
               {
                   this.props.posts.map((post, index) => {
                     return (
-                      <div class="card">
-                        <div class="card-header">
-                          {post.mood}
-                        </div>
-                        <div class="card-body">
-                          <blockquote class="blockquote mb-0">
-                            <p>{post.post}</p>
-                            <footer class="blockquote-footer">{post.username}</footer>
-                          </blockquote>
-                        </div>
-
+                      <div className="card">
+                        {
+                            this.props.editPost !== index ?
+                            <div>
+                            <div className="card-header">
+                              {post.mood}
+                            </div>
+                            <div className="card-body">
+                              <blockquote className="blockquote mb-0">
+                                <p>{post.post}</p>
+                                <footer className="blockquote-footer">{post.username}</footer>
+                              </blockquote>
+                            </div>
+                            </div>
+                            : ''
+                        }
                         <button type="button" className="btn btn-primary"
-                        onClick = {() => this.props.toggleState('editPost', index)}>Edit</button>
+                        onClick = {() => this.props.toggleState(index, post)}>Edit</button>
 
                         {
-                            this.props.editPost === true ?
-                            <EditForm />  : ''
+                            this.props.editPost === index ?
+                            <EditForm handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
                         }
                       </div>
                       )
@@ -180,10 +185,7 @@ class Posts extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            postsList: true,
-            addPost: false,
-            showPost: false,
-            editPost: false,
+            editPost: null,
             posts: [],
             post: {}
         }
@@ -195,16 +197,15 @@ class Posts extends React.Component{
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
     }
 
-    toggleState(post, index){
-        console.log(post, index);
-
-        this.setState({
-            [post]: !this.state[post]
-        })
-    }
-
     componentDidMount(){
         this.getPosts()
+    }
+
+    toggleState(index, post){
+        this.setState({
+            editPost: index,
+            post: post
+        })
     }
 
     getPosts(){
@@ -223,6 +224,7 @@ class Posts extends React.Component{
       this.setState({
         posts: updatePost
       })
+      console.log(posts);
     }
 
     handleCreateSubmit(post){
@@ -252,8 +254,8 @@ class Posts extends React.Component{
         }).then(updatedPost => {
             return updatedPost.json()
         }).then(jsonedPost => {
+            this.setState({editPost: null})
             this.getPosts()
-            this.toggleState('editPost')
         }).catch(error => console.log(error))
     }
 
@@ -261,7 +263,7 @@ class Posts extends React.Component{
         return (
             <div>
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
-                <PostsList editPost = {this.state.editPost} toggleState = {this.toggleState} posts={this.state.posts}/>
+                <PostsList handleUpdateSubmit={this.handleUpdateSubmit} post={this.state.post} editPost={this.state.editPost} toggleState={this.toggleState} posts={this.state.posts}/>
             </div>
         )
     }
