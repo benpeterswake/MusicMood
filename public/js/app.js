@@ -72,7 +72,7 @@ class ViewPost extends React.Component{
             <div>
                 <h2>Individual Post Component Working, not fully styled</h2>
                     <div>
-                        <img src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
+                        <img class= "post-image" src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
                         <p> olena </p>
                         <p> PostText </p>
                         <p> MoodText </p>
@@ -162,13 +162,12 @@ class Navigation extends React.Component {
       <div>
         <nav className="navbar navbar-dark bg-dark">
             <a className="navbar-brand" href="#">
-                <img src="" width="30" height="30" className="d-inline-block align-top" alt=""/>
-                    Logo
+                <img src="musiclogo.png" className="d-inline-block align-top" alt=""/>
             </a>
 
             <form className="form-inline">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" label="Search"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav>
     </div>
@@ -180,7 +179,6 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <h1>Hai frendz</h1>
                 <Navigation />
                 <PostForm />
                 <Posts />
