@@ -1,4 +1,3 @@
-
 class PostForm extends React.Component{
     constructor(props){
         super(props)
@@ -20,8 +19,6 @@ class PostForm extends React.Component{
                       <label for="inputUsername">Username</label>
                       <input type="text" className="form-control" id="username" placeholder="username" />
                     </div>
-
-                    
                   </div>
 
                   <div className="form-group">
@@ -38,31 +35,59 @@ class PostForm extends React.Component{
                     <div className="form-check">
                       <input className="form-check-input" type="checkbox" id="moods" />
                       <label className="form-check-label" for="gridCheck">
-                        I am a mood
+                        Happy
                       </label>
                     </div>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit Post</button>
+
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" id="moods" />
+                      <label className="form-check-label" for="gridCheck">
+                        Sad
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" id="moods" />
+                      <label className="form-check-label" for="gridCheck">
+                        Angry
+                      </label>
+                    </div>
+                  </div>
+
+                  <button type="submit" className="btn btn-primary">Submit Post to PostsList</button>
                 </form>
             </div>
         )
     }
 }
 
-class Post extends React.Component{
+
+class ViewPost extends React.Component{
     render(){
         return(
             <div>
                 <h2>Individual Post Component Working, not fully styled</h2>
                     <div>
-                        <img src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
+                        <img class= "post-image" src='https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c7.0.720.720/21479626_480279855683354_7294317085360914432_n.jpg?ig_cache_key=MTU5OTY4NzI4NzIzODUwOTgyOA%3D%3D.2.com'/>
                         <p> olena </p>
                         <p> PostText </p>
                         <p> MoodText </p>
                         <p> Song </p>
                     </div>
-                <h2>PostForm under here until toggle time</h2>
-                <PostForm />
+
+                <button type="submit" className="btn btn-primary"> Return to all Posts </button>
+                <button type="submit" className="btn btn-primary"> Edit this Post onClick show PostForm </button>
+                    <h2>PostForm under here until toggle time</h2>
+                        <PostForm />
+                            <button type="submit" className="btn btn-primary"> Show PostsList </button>
+
+                            <button type="submit" className="btn btn-primary"> Submit Edits onClick hide PostForm </button>
+
+                            <button type="submit" className="btn btn-primary">Delete Post onClick delete</button>
                 <h3> ===end of individual post component===</h3>
             </div>
 
@@ -78,8 +103,8 @@ class PostsList extends React.Component{
                 <thead>
                 <tr>
                     <th scope="col">User</th>
-                    <th scope="col">Post</th>
-                    <th scope="col">Mood</th>
+                    <th scope="col">Post onClick ViewPost</th>
+                    <th scope="col">Mood </th>
                     <th scope="col">Song</th>
                 </tr>
                 </thead>
@@ -137,13 +162,12 @@ class Navigation extends React.Component {
       <div>
         <nav className="navbar navbar-dark bg-dark">
             <a className="navbar-brand" href="#">
-                <img src="" width="30" height="30" className="d-inline-block align-top" alt=""/>
-                    Logo
+                <img src="musiclogo.png" className="d-inline-block align-top" alt=""/>
             </a>
 
             <form className="form-inline">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" label="Search"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav>
     </div>
@@ -156,12 +180,10 @@ class App extends React.Component{
         return(
             <div>
                 <Navigation />
-                <h1>Hai frendz</h1>
+                <PostForm />
                 <Posts />
                 <PostsList />
-                <Post />
-                <PostForm />
-
+                <ViewPost />
             </div>
         )
     }
