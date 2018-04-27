@@ -28,14 +28,14 @@ class PostsList extends React.Component{
 
                             <div className="card-body">
                               <div className="card-title">
-<<<<<<< HEAD
+
                                 <div className="songTitle">Song Title: {post.song}</div>
-=======
+
                                 <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
 
 
 
->>>>>>> 9126f418bfe85429185a42ee75933c9f981bfcf2
+
                                 <div className="footer"><blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>
