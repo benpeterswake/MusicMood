@@ -24,7 +24,7 @@ body{
 }
 
 #PostList .card {
-  margin: 15px 0px 15px 0px;
+  margin: 5px 0px 0px 0px;
 }
 
 
@@ -42,14 +42,22 @@ body{
 }
 /* Ben */
 
-.card {
+#newsfeed {
   border-radius: 0;
-  margin: 0px 0px 0px 0px;
+  margin: 0 auto;
   border-bottom: 1px solid #7092be;
 }
 
 .username {
   font-size: .8em;
+}
+
+#sidebar {
+  border: 1px solid #7092be;
+  width:14%;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
 }
 
 .avatar-24 {
@@ -69,6 +77,8 @@ body{
 #PostsList .card-header {
   margin-top: 0px;
   border-bottom: 1px solid #7092be;
+
+  background-color: #ffffff;
 }
 
 .postForm{
@@ -94,6 +104,12 @@ span {
   height: 125px;
   box-sizing: content-box;
   width: 100%;
+}
+
+.player {
+  width: 100%;
+
+
 }
 
 .footer {
