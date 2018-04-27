@@ -17,6 +17,29 @@ body{
   margin: 0 auto;
 }
 
+#PostList {
+ padding: 0px;
+ margin-top: -10px;
+}
+
+#PostList .card {
+  margin: 15px 0px 15px 0px;
+}
+
+
+#active {
+  background-color: #54A7FF;
+  padding:20px;
+}
+
+.postForm{
+  padding-top:120px;
+}
+
+#PostForm span {
+  cursor: pointer;
+}
+
 .card {
   border-radius: 0;
   margin: 0px 0px 0px 0px;
@@ -69,7 +92,7 @@ span {
   width: 485px;
   height: 125px;
   box-sizing: content-box;
-  width: 100%;
+width: 100%;
 }
 
 .footer {
