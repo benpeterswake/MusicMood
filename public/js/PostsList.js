@@ -4,7 +4,6 @@ class PostsList extends React.Component{
           <section id="PostList">
           <div className="container">
           <div className="col-lg-6 mx-auto">
-            <h2>Posts</h2>
               {
                   this.props.posts.map((post, index) => {
                     return (

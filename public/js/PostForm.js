@@ -34,19 +34,19 @@ class PostForm extends React.Component{
                   <div className="card-header">
                     <div className="row">
                       <div className="col">
-                        <input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" />
+                        <input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" required/>
                       </div>
                       <div className="col">
-                        <input type="text" className="form-control" id="mood" value={this.state.mood} onChange={this.handleChange} placeholder="Current Mood" />
+                        <input type="text" className="form-control" id="mood" value={this.state.mood} onChange={this.handleChange} placeholder="Current Mood" required/>
                       </div>
                     </div>
                   </div>
                   <div class="card-body">
                     <div className="form-group">
-                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." />
+                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." required/>
                     </div>
                     <hr/>
-                    { this.state.song != '' ? <button type="submit" className="btn btn-primary">Post</button> :null }  
+                    { this.state.song != '' ? <button type="submit" className="btn btn-primary">Post</button> :null }
                     </div>
                   </form>
                 </div>

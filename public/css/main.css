@@ -1,10 +1,14 @@
+
+body{
+  background: #FAFAFA;
+}
+
 .post-image{
   max-width:100px;
   min-width: 100px;
   min-width: 100px;
   max-width: 100px;
 }
-
 
 .navbar-brand>img {
    max-height: 20%;
@@ -14,12 +18,16 @@
  }
 
 .card {
-  margin: 35px 0px 35px 0px;
+  margin: 0px 0px 15px 0px;
 }
 
 .postForm{
-  padding:70px 0px 30px 0px;
+  padding-top:100px;
+}
 
+#PostList {
+  padding: 0px;
+  margin-top: -10px;
 }
 
 
