@@ -1,15 +1,19 @@
 #song {
-  border: none;
   font-size: 25px;
 }
 
 #PostForm .card {
   background-color: #60a5ff;
-
 }
 
 #PostForm input {
   background-color: #60a5ff;
+  color:white;
+  border: none;
+}
+
+#PostForm .col-lg-3{
+  text-align: center;
   color:white;
 }
 

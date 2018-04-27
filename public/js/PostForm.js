@@ -9,6 +9,7 @@ class PostForm extends React.Component{
             song: ''
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -16,12 +17,26 @@ class PostForm extends React.Component{
       this.setState({
         [event.target.id]: event.target.value
       })
+
+    }
+
+    handleClick(mood){
+      this.setState({
+        mood: mood
+      })
       console.log(this.state);
     }
 
     handleSubmit(event){
       event.preventDefault()
       this.props.handleSubmit(this.state)
+      this.setState({
+        username: '',
+        avatar: '',
+        post_body: '',
+        mood: '',
+        song: ''
+      })
     }
 
     render(){
@@ -33,11 +48,21 @@ class PostForm extends React.Component{
                   <form onSubmit={this.handleSubmit}>
                   <div className="card-header">
                     <div className="row">
-                      <div className="col">
-                        <input type="text" className="form-control" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" required/>
+                      <div className="col-lg-3">
+                      {this.state.mood === "happy"?<span id="active" onClick={()=> this.handleClick('')}><i class="em em-smiley"></i></span>
+                      :<span onClick={()=> this.handleClick("happy")}><i class="em em-smiley"></i></span>}
                       </div>
-                      <div className="col">
-                        <input type="text" className="form-control" id="mood" value={this.state.mood} onChange={this.handleChange} placeholder="Current Mood" required/>
+                      <div className="col-lg-3">
+                      {this.state.mood === "sad" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-white_frowning_face"></i></span>
+                      : <span onClick={()=> this.handleClick("sad")}><i class="em em-white_frowning_face"></i></span>}
+                      </div>
+                      <div className="col-lg-3">
+                      {this.state.mood === "mad" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-angry"></i></span>
+                      :<span onClick={()=> this.handleClick("mad")}><i class="em em-angry"></i></span>}
+                      </div>
+                      <div className="col-lg-3">
+                      {this.state.mood === "chill" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-beer"></i></span>
+                      : <span onClick={()=> this.handleClick("chill")}><i class="em em-beer"></i></span>}
                       </div>
                     </div>
                   </div>
@@ -46,7 +71,7 @@ class PostForm extends React.Component{
                       <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." required/>
                     </div>
                     <hr/>
-                    { this.state.song != '' ? <button type="submit" className="btn btn-primary">Post</button> :null }
+                      {this.state.song != '' ? <button type="submit" className="btn btn-primary">Post</button> :null }
                     </div>
                   </form>
                 </div>

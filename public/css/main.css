@@ -17,17 +17,27 @@ body{
    margin: 0 auto;
  }
 
-.card {
-  margin: 0px 0px 15px 0px;
+#PostList {
+ padding: 0px;
+ margin-top: -10px;
+}
+
+#PostList .card {
+  margin: 15px 0px 15px 0px;
+}
+
+
+#active {
+  background-color: #54A7FF;
+  padding:20px;
 }
 
 .postForm{
-  padding-top:100px;
+  padding-top:120px;
 }
 
-#PostList {
-  padding: 0px;
-  margin-top: -10px;
+#PostForm span {
+  cursor: pointer;
 }
 
 
