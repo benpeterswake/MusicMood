@@ -17,6 +17,7 @@ body{
   margin: 0 auto;
 }
 
+/* Ben */
 #PostList {
  padding: 0px;
  margin-top: -10px;
@@ -39,12 +40,12 @@ body{
 #PostForm span {
   cursor: pointer;
 }
+/* Ben */
 
 .card {
   border-radius: 0;
   margin: 0px 0px 0px 0px;
   border-bottom: 1px solid #7092be;
-
 }
 
 .username {
@@ -92,15 +93,12 @@ span {
   width: 485px;
   height: 125px;
   box-sizing: content-box;
-width: 100%;
+  width: 100%;
 }
 
 .footer {
   margin-top: 25px;
 }
-
-
-
 
 #PostList {
   padding: 0px;
