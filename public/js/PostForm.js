@@ -48,22 +48,31 @@ class PostForm extends React.Component{
                   <form onSubmit={this.handleSubmit}>
                   <div className="card-header">
                     <div className="row">
-                      <div className="col-lg-3">
+                      <div className="col-lg-2">
                       {this.state.mood === "happy"?<span id="active" onClick={()=> this.handleClick('')}><i class="em em-smiley"></i></span>
                       :<span onClick={()=> this.handleClick("happy")}><i class="em em-smiley"></i></span>}
                       </div>
-                      <div className="col-lg-3">
+                      <div className="col-lg-2">
                       {this.state.mood === "sad" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-white_frowning_face"></i></span>
                       : <span onClick={()=> this.handleClick("sad")}><i class="em em-white_frowning_face"></i></span>}
                       </div>
-                      <div className="col-lg-3">
+                      <div className="col-lg-2">
                       {this.state.mood === "mad" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-angry"></i></span>
                       :<span onClick={()=> this.handleClick("mad")}><i class="em em-angry"></i></span>}
                       </div>
-                      <div className="col-lg-3">
+                      <div className="col-lg-2">
                       {this.state.mood === "chill" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-beer"></i></span>
                       : <span onClick={()=> this.handleClick("chill")}><i class="em em-beer"></i></span>}
                       </div>
+                      <div className="col-lg-2">
+                      {this.state.mood === "cute" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-blush"></i></span>
+                      : <span onClick={()=> this.handleClick("cute")}><i class="em em-blush"></i></span>}
+                      </div>
+                      <div className="col-lg-2">
+                      {this.state.mood === "cold sweat" ? <span id="active" onClick={()=> this.handleClick('')}><i class="em em-cold_sweat"></i></span>
+                      : <span onClick={()=> this.handleClick("cold sweat")}><i class="em em-cold_sweat"></i></span>}
+                      </div>
+
                     </div>
                   </div>
                   <div class="card-body">
