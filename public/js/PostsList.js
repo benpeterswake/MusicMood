@@ -14,26 +14,28 @@ class PostsList extends React.Component{
                             <div>
                             <div className="card-header">
                               {post.mood}
+                              <button type="button" className="btn btn-default btn-sm"
+                              onClick = {() => this.props.toggleState(index, post)}>Edit</button>
+
+                              {
+                                  this.props.editPost === index ?
+                                  <EditForm handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
+                              }
+                              <button type="button" className="btn btn-default btn-sm"
+                              onClick = {() => this.props.deletePost(post, index)}>Delete</button>
                             </div>
+
                             <div className="card-body">
                               <blockquote className="blockquote mb-0">
-                                <p>{post.post}</p>
                                 <footer className="blockquote-footer">{post.username}</footer>
+                                <p>{post.post}</p>
                               </blockquote>
                             </div>
                             </div>
                             : ''
                         }
-                        <button type="button" className="btn btn-primary"
-                        onClick = {() => this.props.toggleState(index, post)}>Edit</button>
 
-                        {
-                            this.props.editPost === index ?
-                            <EditForm handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
-                        }
 
-                        <button type="button" className="btn btn-primary"
-                        onClick = {() => this.props.deletePost(post, index)}>Delete</button>
                       </div>
                       )
                   })
