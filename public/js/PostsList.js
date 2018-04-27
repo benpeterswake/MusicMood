@@ -24,20 +24,16 @@ class PostsList extends React.Component{
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} >&#9998;</span>
                               </div>
-
                               <div className="card-header"> Mood: {post.mood}
                               </div>
                             </div>
 
                             <div className="card-body">
                               <div className="card-title">
-                                <div className="song">{post.song}</div>
-
-
+                                <div className="songTitle">Song Title: {post.song}</div>
                                 <div className="footer"><blockquote className="blockquote mb-0">
-                                  <footer className="username">@{post.username}</footer>
+                                  <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>
-
                               </div>
                             </div>
 

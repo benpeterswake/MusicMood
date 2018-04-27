@@ -30,7 +30,7 @@ body{
 
 #active {
   background-color: #54A7FF;
-  padding:20px;
+  padding:20px 10px 20px 10px;
 }
 
 .postForm{
@@ -62,11 +62,11 @@ body{
   cursor: pointer;
 }
 
-.card-body {
+#PostList .card-body {
   min-height: 150px;
 }
 
-.card-header {
+#PostsList .card-header {
   margin-top: 0px;
   border-bottom: 1px solid #7092be;
 }
