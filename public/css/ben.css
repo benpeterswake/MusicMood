@@ -1,0 +1,23 @@
+#song {
+  font-size: 25px;
+}
+
+#PostForm .card {
+  background-color: #60a5ff;
+  margin-bottom: 30px;
+}
+
+#PostForm input {
+  background-color: #60a5ff;
+  color:white;
+  border: none;
+}
+
+#PostForm .col-lg-2{
+  text-align: center;
+  color:white;
+}
+
+::placeholder{
+  color:white!important
+}

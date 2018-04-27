@@ -2,18 +2,14 @@ class Navigation extends React.Component {
   render () {
     return (
       <div>
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark bg-dark fixed-top">
+        <div className="col-lg-6 mx-auto text-center">
             <a className="navbar-brand" href="#">
-                <img src="" width="30" height="30" className="d-inline-block align-top" alt=""/>
-                    Logo
+                <img src="musiclogo.png" className="d-inline-block align-top" alt=""/>
             </a>
-
-            <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" label="Search"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+          </div>
         </nav>
-    </div>
+      </div>
     )
   }
 }
