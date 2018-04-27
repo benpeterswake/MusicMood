@@ -9,6 +9,7 @@ class PostsList extends React.Component{
                   this.props.posts.map((post, index) => {
                     return (
                       <div className="card">
+                        {/* Show list template*/}
                         {
                             this.props.editPost !== index ?
                             <div>
@@ -16,26 +17,24 @@ class PostsList extends React.Component{
                               {post.mood}
                               <button type="button" className="btn btn-default btn-sm"
                               onClick = {() => this.props.toggleState(index, post)}>Edit</button>
-
-                              {
-                                  this.props.editPost === index ?
-                                  <EditForm handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
-                              }
                               <button type="button" className="btn btn-default btn-sm"
                               onClick = {() => this.props.deletePost(post, index)}>Delete</button>
                             </div>
 
                             <div className="card-body">
+                              <p>{post.song}</p>
                               <blockquote className="blockquote mb-0">
                                 <footer className="blockquote-footer">{post.username}</footer>
-                                <p>{post.post}</p>
                               </blockquote>
                             </div>
                             </div>
                             : ''
                         }
-
-
+                        {/* Show edit form template*/}
+                        {
+                            this.props.editPost === index ?
+                            <EditForm closeEdit={this.props.closeEdit} handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
+                        }
                       </div>
                       )
                   })

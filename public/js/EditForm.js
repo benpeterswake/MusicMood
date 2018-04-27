@@ -51,7 +51,7 @@ class EditForm extends React.Component{
                    <div className="form-group">
                     <input type="text" className="form-control card-text" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Song" />
                    </div>
-                    <button type="submit" className="btn btn-primary">Submit Edits</button>
+                    <button type="submit" className="btn btn-primary">Submit Edits</button> <button onClick={()=> this.props.closeEdit(null)} className="btn btn-default">Cancel</button>
                 </div>
                </form>
               </div>

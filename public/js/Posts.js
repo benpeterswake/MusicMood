@@ -13,6 +13,7 @@ class Posts extends React.Component{
         this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
         this.deletePost = this.deletePost.bind(this)
+        this.closeEdit = this.closeEdit.bind(this)
     }
 
     componentDidMount(){
@@ -24,6 +25,12 @@ class Posts extends React.Component{
             editPost: index,
             post: post
         })
+    }
+
+    closeEdit(x){
+      this.setState({
+        editPost: x
+      })
     }
 
     getPosts(){
@@ -94,7 +101,14 @@ class Posts extends React.Component{
         return (
             <div>
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
-                <PostsList handleUpdateSubmit={this.handleUpdateSubmit} post={this.state.post} editPost={this.state.editPost} toggleState={this.toggleState} posts={this.state.posts} deletePost={this.deletePost}/>
+                <PostsList
+                closeEdit = {this.closeEdit}
+                handleUpdateSubmit={this.handleUpdateSubmit}
+                post={this.state.post}
+                editPost={this.state.editPost}
+                toggleState={this.toggleState}
+                posts={this.state.posts}
+                deletePost={this.deletePost}/>
             </div>
         )
     }
