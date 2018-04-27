@@ -7,9 +7,7 @@ class PostsList extends React.Component{
             {
               this.props.posts.map((post, index) => {
                 return (
-
-
-                  <div className="card">
+                  <div className="card" id="newsfeed">
                     {/* Show list template*/}
                     {
                       this.props.editPost !== index ?
@@ -31,7 +29,8 @@ class PostsList extends React.Component{
 
                             <div className="card-body">
                               <div className="card-title">
-                                <div className="song">{post.song}</div>
+                                <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+
 
 
                                 <div className="footer"><blockquote className="blockquote mb-0">
@@ -57,7 +56,6 @@ class PostsList extends React.Component{
                   })
                 }
               </div>
-
 
             </div>
           </section>

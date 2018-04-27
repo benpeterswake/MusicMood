@@ -4,6 +4,7 @@ class App extends React.Component{
             <div>
                 <Navigation />
                 <Posts />
+
             </div>
         )
     }
