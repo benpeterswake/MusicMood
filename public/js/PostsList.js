@@ -22,21 +22,23 @@ class PostsList extends React.Component{
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} >&#9998;</span>
                               </div>
-
                               <div className="card-header"> Mood: {post.mood}
                               </div>
                             </div>
 
                             <div className="card-body">
                               <div className="card-title">
+
+                                <div className="songTitle">Song Title: {post.song}</div>
+
                                 <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
 
 
 
-                                <div className="footer"><blockquote className="blockquote mb-0">
-                                  <footer className="username">@{post.username}</footer>
-                                </blockquote></div>
 
+                                <div className="footer"><blockquote className="blockquote mb-0">
+                                  <footer className="username">@{post.username}Benpeterscode</footer>
+                                </blockquote></div>
                               </div>
                             </div>
 

@@ -21,3 +21,13 @@
 ::placeholder{
   color:white!important
 }
+
+.user{
+  margin-top: 100px;
+  left: 12%;
+  position: fixed;
+  text-align: center;
+}
+.user-icon{
+  width: 100px;
+}
