@@ -1,6 +1,11 @@
 class Post
   attr_reader :id, :username, :avatar, :post, :mood, :song
-  DB = PG.connect(host: "", port: 5432, dbname: 'musicmood')
+  if (ENV['DATABASE_URL'])
+   uri = URI.parse(ENV['DATABASE_URL'])
+   DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
+  else
+    DB = PG.connect(host: "", port: 5432, dbname: 'musicmood')
+  end
 
   def initialize(opts={})
     @id = opts["id"].to_i
