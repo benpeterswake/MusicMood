@@ -1,11 +1,9 @@
 class SignupController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
-    def new
-
-    end
 
     def create
-      render json: User.create(params["user"])
+      render json: Signup.create(params["signup"])
     end
 
 end
