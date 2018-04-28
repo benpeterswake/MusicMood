@@ -6,10 +6,30 @@ class PostsList extends React.Component{
           <div className="col-lg-6 mx-auto">
             {
               this.props.posts.map((post, index) => {
+                let parsedURL= null
 
+<<<<<<< HEAD
                   let url = post.song.split('=')
                   let parsedUrl = 'https://www.youtube.com/embed/' + url[1];
                   console.log(url);
+=======
+                if(post.song.includes("youtube")){
+
+                  let youtubeURL = post.song.split('=')
+                  parsedURL= 'https://www.youtube.com/embed/' + youtubeURL[1];
+
+                  console.log(post);
+
+              } else if(post.song.includes("spotify")){
+                  let spotifyURL = post.song.split('track')
+                  parsedURL = 'https://www.spotify.com/us/embed/track/' + spotifyURL[1];
+
+                  console.log(parsedURL);
+
+              } else {
+                  return ("Please insert a youtube or spotify player link")
+              }
+>>>>>>> 8edad8e9f9ba63c15adbfc64b31ba48e1e7d6e6c
 
                 return (
                   <div className="card" id="newsfeed">
@@ -30,19 +50,26 @@ class PostsList extends React.Component{
                             </div>
 
                             <div className="card-body">
+<<<<<<< HEAD
                               <div className="card-title">
                                 <div className="songTitle">Song Title: {post.song}</div>
                                 <iframe className="video" src={parsedUrl} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+=======
+
+                                <div className="video">Song Title: {post.song}</div>
+                                    <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+>>>>>>> 8edad8e9f9ba63c15adbfc64b31ba48e1e7d6e6c
                                 <div className="footer"><blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>
+
                               </div>
                             </div>
 
-                          </div>
                           : ''
                         }
-                        {/* Show edit form template*/}
+
                         {
                           this.props.editPost === index ?
                           <EditForm closeEdit={this.props.closeEdit} handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
