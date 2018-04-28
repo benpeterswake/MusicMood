@@ -5,12 +5,19 @@ class User extends React.Component{
     this.login = this.login.bind(this)
   }
   login(){
+    fetch('/signup')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        users: data
+      })
+    })
     console.log('login');
 
   }
   render(){
    return(
-     <div> className="container">
+     <div className="container">
        <div className="col-lg-2 user">
          <div className="card">
            <div className="card-header">
@@ -34,9 +41,7 @@ class App extends React.Component{
         return(
             <div>
                 <Navigation />
-                <User />
-                <Posts />
-
+                <Signup />
             </div>
         )
     }

@@ -18,7 +18,7 @@
   color:white;
 }
 
-::placeholder{
+#postForm ::placeholder{
   color:white!important
 }
 

@@ -119,6 +119,14 @@ span {
   margin-top: -10px;
 }
 
+#sign-up-text {
+  text-align: center;
+}
+
+#signup-form {
+  margin-top: 100px;
+}
+
 
 
 @media only screen and (max-width: 1000px) {
