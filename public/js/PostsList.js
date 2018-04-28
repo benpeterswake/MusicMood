@@ -31,13 +31,15 @@ class PostsList extends React.Component{
 
                                 <div className="songTitle">Song Title: {post.song}</div>
 
-                                <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+                                <div className="song"><iframe className="player" src="https://www.youtube.com/embed/" + {post.song} width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
 
-
+                                <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+</div>
 
 
                                 <div className="footer"><blockquote className="blockquote mb-0">
-                                  <footer className="username">@{post.username}Benpeterscode</footer>
+                                  <footer className="username">@{post.username}</footer>
                                 </blockquote></div>
                               </div>
                             </div>
