@@ -6,10 +6,24 @@ class PostsList extends React.Component{
           <div className="col-lg-6 mx-auto">
             {
               this.props.posts.map((post, index) => {
+                let parsedURL= null
 
-                  let url = post.song.split('=')
-                  let parsedUrl = 'https://www.youtube.com/embed/' + url[1];
-                  console.log(parsedUrl);
+                if(post.song.includes("youtube")){
+
+                  let youtubeURL = post.song.split('=')
+                  parsedURL= 'https://www.youtube.com/embed/' + youtubeURL[1];
+
+                  console.log(post);
+
+              } else if(post.song.includes("spotify")){
+                  let spotifyURL = post.song.split('track')
+                  parsedURL = 'https://www.spotify.com/us/embed/track/' + spotifyURL[1];
+
+                  console.log(parsedURL);
+
+              } else {
+                  return ("Please insert a youtube or spotify player link")
+              }
 
                 return (
                   <div className="card" id="newsfeed">
@@ -30,30 +44,20 @@ class PostsList extends React.Component{
                             </div>
 
                             <div className="card-body">
-                              <div className="card-title">
-<<<<<<< HEAD
-                                <div className="songTitle">Song Title: {post.song}</div>
-                                <iframe className="video" src={parsedUrl} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-=======
 
-                                <div className="songTitle">Song Title: {post.song}</div>
+                                <div className="video">Song Title: {post.song}</div>
+                                    <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-                                <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
-
-
-
-
->>>>>>> af2de38c65a3ce3b707f605410186afe3f027391
                                 <div className="footer"><blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>
+
                               </div>
                             </div>
 
-                          </div>
                           : ''
                         }
-                        {/* Show edit form template*/}
+
                         {
                           this.props.editPost === index ?
                           <EditForm closeEdit={this.props.closeEdit} handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
