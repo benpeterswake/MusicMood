@@ -9,7 +9,7 @@ class PostsList extends React.Component{
 
                   let url = post.song.split('=')
                   let parsedUrl = 'https://www.youtube.com/embed/' + url[1];
-                  console.log(parsedUrl);
+                  console.log(url);
 
                 return (
                   <div className="card" id="newsfeed">
@@ -31,19 +31,8 @@ class PostsList extends React.Component{
 
                             <div className="card-body">
                               <div className="card-title">
-<<<<<<< HEAD
                                 <div className="songTitle">Song Title: {post.song}</div>
                                 <iframe className="video" src={parsedUrl} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-=======
-
-                                <div className="songTitle">Song Title: {post.song}</div>
-
-                                <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
-
-
-
-
->>>>>>> af2de38c65a3ce3b707f605410186afe3f027391
                                 <div className="footer"><blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>

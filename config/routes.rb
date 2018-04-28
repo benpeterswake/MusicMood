@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   delete '/posts/:id', to: 'posts#delete'
   put '/posts/:id', to: 'posts#update'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
-  get '/signup' => 'users#new'
+  get '/login' => 'login#new'
+  post '/login' => 'login#create'
+  get '/logout' => 'login#destroy'
+
+  get '/signup' => 'signup#new'
+  post '/signup' => 'signup#create'
 
 end
