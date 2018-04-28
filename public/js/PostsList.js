@@ -6,15 +6,18 @@ class PostsList extends React.Component{
           <div className="col-lg-6 mx-auto">
             {
               this.props.posts.map((post, index) => {
+
+                  let url = post.song.split('=')
+                  let parsedUrl = 'https://www.youtube.com/embed/' + url[1];
+                  console.log(parsedUrl);
+
                 return (
                   <div className="card" id="newsfeed">
                     {/* Show list template*/}
                     {
                       this.props.editPost !== index ?
                       <div>
-
-                        <div class="card-block">
-
+                        <div className="card-block">
                           <div className="card-subtitle">
                             <button type="button" className="badge badge-danger float-right"
                               onClick = {() => this.props.deletePost(post, index)}>X</button>
@@ -28,14 +31,8 @@ class PostsList extends React.Component{
 
                             <div className="card-body">
                               <div className="card-title">
-<<<<<<< HEAD
                                 <div className="songTitle">Song Title: {post.song}</div>
-=======
-                                <div className="song">{post.song} <iframe className="player" src="https://open.spotify.com/embed/track/7yotKA30dwTKNEGomV9ZsI" width="485" height="125" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
-
-
-
->>>>>>> 9126f418bfe85429185a42ee75933c9f981bfcf2
+                                <iframe className="video" src={parsedUrl} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <div className="footer"><blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username}Benpeterscode</footer>
                                 </blockquote></div>
@@ -51,9 +48,6 @@ class PostsList extends React.Component{
                           <EditForm closeEdit={this.props.closeEdit} handleUpdateSubmit={this.props.handleUpdateSubmit} post={this.props.post} />  : ''
                         }
                       </div>
-
-
-
                     )
                   })
                 }
