@@ -4,7 +4,6 @@ class Signup extends React.Component {
     this.state={
       username: '',
       password: '',
-      avatar: ''
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -13,18 +12,15 @@ class Signup extends React.Component {
     this.setState({
       [event.target.id]: event.target.value
     })
-    console.log(event.target.value);
   }
 
-  login(){
-    fetch('/login')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        users: data
-      })
+  signup(event){
+    event.preventDefault();
+    this.props.signUp(this.state)
+    this.setState({
+      username: '',
+      password: ''
     })
-    console.log('login');
   }
 
   render() {
@@ -40,7 +36,7 @@ class Signup extends React.Component {
           </div>
           <div className="col" id="right-home">
             <section id="signup-form">
-              <div className="container signup-form" id="signup-form">
+              <div className="container signup-form">
                 <div className="col-lg-6 mx-auto">
                   <div className="card" id="signup-card">
                     <div id="welcome">
@@ -51,10 +47,10 @@ class Signup extends React.Component {
                         <div className="row">
                           <div className="card-body" id="login-text">Join Music Mood today.
                             <div className="form-group" id="Signup">
-                              <input type="text" id="username" className="form-control" placeholder="Username" onChange={this.handleChange} value={this.state.username} />
-                              <input type="password" id="password" className="form-control" placeholder="Password"  onChange={this.handleChange} value={this.state.password} />
-                              <button className="btn btn-outline-secondary btn-lg btn-block" id="submit-btn">Sign Up</button>
-                              <div>Have an account? <a href="#" className="btn btn-sm" id="login-link" onClick={this.login}>Login</a></div>
+                              <input type="text" id="username" className="form-control" placeholder="Username" onChange={this.handleChange} value={this.state.username} required/>
+                              <input type="password" id="password" className="form-control" placeholder="Password"  onChange={this.handleChange} value={this.state.password} required/>
+                              <button type="submit" className="btn btn-outline-secondary btn-lg btn-block" id="submit-btn">Sign Up</button>
+                              <div>Have an account? <a href="#" className="btn btn-sm" id="login-link" onClick={() => this.props.toggleState('showSignup','showLogin')}>Login</a></div>
                             </div>
                           </div>
                         </div>
