@@ -31,25 +31,42 @@ class Login extends React.Component {
     console.log(event.target.value);
   }
 
+  signup(){
+    fetch('/signup')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        users: data
+      })
+    })
+    console.log('signup');
+
+  }
+
   render() {
     return (
-      <section id="login-form">
-        <div className="login-form">
+      <section id="LoginForm">
+        <div className="container login-form">
           <div className="col-lg-6 mx-auto">
             <div className="card">
+
               <form onSubmit={this.getProfile}>
-                <div className="card-header">
-                    <div className="card-body" id='login-text'>Log In</div>
-                      <div className="form-group">
-                        <input type="text" id="login-username" className="form-control"             placeholder="username" onChange={this.handleChange}
-                         />
+                <div className="card-body">
+                    <div className="form-group font-weight-bold login-head">
+                        Log In
                         </div>
-                        <div className="form-group">
-                        <input type="password" id="login-password" className="form-control" placeholder="password" onChange={this.handleChange}
-                         />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                    <div className="form-group">
+                    <input type="text" id="login-username" className="form-control"      placeholder="username" onChange={this.handleChange}
+                     />
                      </div>
+
+                     <div className="form-group">
+                    <input type="password" id="login-password" className="form-control" placeholder="password" onChange={this.handleChange}
+                     />
+                     </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
+                    <a href="#" className="btn btn-info" onClick={this.signup}> Create an account </a>
+                </div>
               </form>
             </div>
           </div>

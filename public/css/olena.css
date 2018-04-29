@@ -1,11 +1,8 @@
-#login-text {
-  text-align: center;
-}
-
-#login-form {
+.login-form {
   margin-top: 100px;
+  margin-left: 35px;
 }
 
-#login-username {
-    color: black;
+.login-head{
+  margin-left: 2.5px;
 }
