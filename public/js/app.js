@@ -26,9 +26,17 @@ class User extends React.Component{
 class App extends React.Component{
     render(){
         return(
+<<<<<<< HEAD
           <section>
               <Signup />
           </section>
+=======
+            <div>
+              <Signup />
+            
+
+            </div>
+>>>>>>> 3dcaf11416f5b6a8e32223771b180938afdf2131
         )
     }
 }
