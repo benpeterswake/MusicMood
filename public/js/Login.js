@@ -9,7 +9,6 @@ class Login extends React.Component {
     this.getProfile = this.getProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.signup = this.signup.bind(this)
-
   }
 
   getProfile(event){
@@ -52,10 +51,10 @@ class Login extends React.Component {
                 <div className="card-body">
                     <div className="form-group font-weight-bold login-head">Log In</div>
                     <div className="form-group">
-                        <input type="text" id="login-username" className="form-control"      placeholder="username" required onChange={this.handleChange}/>
+                        <input type="text" id="username" className="form-control"      placeholder="username" required onChange={this.handleChange} value={this.state.username}/>
                     </div>
                     <div className="form-group">
-                        <input type="password" id="login-password" className="form-control" placeholder="password" required onChange={this.handleChange}/>
+                        <input type="password" id="password" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password}/>
                      </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                     <a href="#" className="btn btn-info" onClick={this.signup}> Create an account</a>
