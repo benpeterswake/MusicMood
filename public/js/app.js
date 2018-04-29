@@ -27,10 +27,7 @@ class App extends React.Component{
     render(){
         return(
           <section>
-              <Navigation />
               <Signup />
-              <User />
-              <Posts />
           </section>
         )
     }
