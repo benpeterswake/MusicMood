@@ -40,8 +40,8 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Navigation />
-                <Signup />
+              <Signup />
+              <Navigation />
             </div>
         )
     }
