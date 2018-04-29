@@ -1,20 +1,8 @@
 class User extends React.Component{
   constructor(props){
     super(props)
-
-    this.login = this.login.bind(this)
   }
-  login(){
-    fetch('/signup')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        users: data
-      })
-    })
-    console.log('login');
 
-  }
   render(){
    return(
      <div className="container">
@@ -26,11 +14,10 @@ class User extends React.Component{
            </div>
            <div className="card-body">
               <h4>Welcome, Benjamin</h4>
-              <button onClick={this.login}>Login with spotify</button>
            </div>
          </div>
-      </div>
-    </div>
+       </div>
+     </div>
    )
   }
 }
@@ -40,10 +27,11 @@ class App extends React.Component{
     render(){
         return(
             <div>
-              <Signup />
-            
+            <Login />
+
 
             </div>
+
         )
     }
 }
