@@ -42,6 +42,7 @@ class App extends React.Component{
             <div>
               <Signup />
             
+
             </div>
         )
     }
