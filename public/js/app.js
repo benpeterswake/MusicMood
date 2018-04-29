@@ -26,8 +26,9 @@ class App extends React.Component{
     render(){
         return(
             <div>
-
-              <Auth />
+              <Navigation />
+              <User />
+              <Posts />
 
             </div>
 

@@ -78,7 +78,7 @@ body{
   margin-top: 0px;
   border-bottom: 1px solid #7092be;
 
-  background-color: #ffffff;
+  background-color: white;
 }
 
 .postForm{
@@ -96,6 +96,15 @@ span {
   cursor: pointer;
   margin-top: 8px;
   margin-right: 5px;
+  font-size: 14px;
+  background-color: #4DA2F3;
+  border: none;
+  color: white;
+}
+
+.pencil {
+  font-size: 15px;
+  color: white;
 }
 
 .song {

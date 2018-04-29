@@ -69,6 +69,7 @@
 #username {
   margin-top: 20px;
   margin-bottom: 20px;
+  border-top: 1px solid black;
 }
 
 #welcome {
@@ -81,4 +82,13 @@
 
 #submit-btn {
   margin-top: 20px;
+}
+
+#post-header {
+  background-color: #4DA2F3;
+  color: white;
+}
+
+#fa-minus-square {
+  background-color: #000000;
 }

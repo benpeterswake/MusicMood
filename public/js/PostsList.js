@@ -33,13 +33,20 @@ class PostsList extends React.Component{
                       <div>
                         <div className="card-block">
                           <div className="card-subtitle">
-                            <button type="button" className="badge badge-danger float-right"
-                              onClick = {() => this.props.deletePost(post, index)}>X</button>
+
+                            <button type="button" className="badge float-right"
+                              onClick = {() => this.props.deletePost(post, index)}><i class="far fa-trash-alt"></i></button>
+
 
                               <span className="pencil float-right"
-                                onClick = {() => this.props.toggleState(index, post)} >&#9998;</span>
+                                onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
                               </div>
-                              <div className="card-header"> Mood: {post.mood}
+
+
+
+
+
+                              <div className="card-header" id="post-header"> Mood: {post.mood}
                               </div>
                             </div>
 
