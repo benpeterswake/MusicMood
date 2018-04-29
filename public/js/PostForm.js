@@ -75,7 +75,7 @@ class PostForm extends React.Component{
 
                     </div>
                   </div>
-                  <div class="card-body">
+                  <div className="card-body">
                     <div className="form-group">
                       <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." required/>
                     </div>

@@ -108,8 +108,6 @@ span {
 
 .player {
   width: 100%;
-
-
 }
 
 .footer {
@@ -120,6 +118,11 @@ span {
   padding: 0px;
   margin-top: -10px;
 }
+
+#signup-form {
+  margin-top: 100px;
+}
+
 
 
 @media only screen and (max-width: 1000px) {

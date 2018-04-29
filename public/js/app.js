@@ -1,7 +1,11 @@
 class User extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
   render(){
    return(
-     <div> className="container">
+     <div className="container">
        <div className="col-lg-2 user">
          <div className="card">
            <div className="card-header">
@@ -12,8 +16,8 @@ class User extends React.Component{
               <h4>Welcome, Benjamin</h4>
            </div>
          </div>
-      </div>
-    </div>
+       </div>
+     </div>
    )
   }
 }
@@ -22,12 +26,17 @@ class User extends React.Component{
 class App extends React.Component{
     render(){
         return(
+<<<<<<< HEAD
+          <section>
+              <Signup />
+          </section>
+=======
             <div>
-                <Navigation />
-                <User />
-                <Posts />
+              <Signup />
+            
 
             </div>
+>>>>>>> 3dcaf11416f5b6a8e32223771b180938afdf2131
         )
     }
 }
