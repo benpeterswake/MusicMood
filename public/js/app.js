@@ -41,7 +41,7 @@ class App extends React.Component{
         return(
             <div>
                 <Navigation />
-                <Signup />
+                <Login />
             </div>
         )
     }
