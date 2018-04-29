@@ -23,16 +23,53 @@ class User extends React.Component{
 
 
 class App extends React.Component{
-    render(){
-        return(
-            <div>
-
-              <Auth />
-
-            </div>
-
-        )
+  constructor(props){
+    super(props)
+    this.state = {
+      session: false,
+      username: null
     }
+    this.getSession = this.getSession.bind(this)
+    this.beginSession = this.beginSession.bind(this)
+  }
+
+  componentDidMount() {
+    this.getSession()
+  }
+
+  getSession(){
+    fetch('/sessions')
+    .then(res => res.json())
+    .then((data) => {
+      console.log(data);
+      if(data.status === 400){
+        this.setState({
+          session: false,
+          username: null
+        })
+      }else{
+        this.setState({
+          session: true,
+          username: data.username
+        })
+      }
+    }).catch(error => console.log(error))
+  }
+
+  beginSession(){
+    this.componentDidMount()
+  }
+
+  render(){
+      return(
+        this.state.session === false? <Auth beginSession={this.beginSession} /> :
+        <div>
+          <Navigation/ >
+          <User />
+          <Posts />
+        </div>
+      )
+  }
 }
 
 ReactDOM.render(

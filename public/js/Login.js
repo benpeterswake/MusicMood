@@ -4,24 +4,10 @@ class Login extends React.Component {
     this.state={
       username: '',
       password: '',
-      avatar: ''
-  }
-    this.getProfile = this.getProfile.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.signup = this.signup.bind(this)
   }
 
-  getProfile(event){
-      event.preventDefault()
-      fetch('/profile')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          users: data,
-          posts:data
-        })
-      })
-      console.log('getting profile and all posts');
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event){
@@ -31,23 +17,23 @@ class Login extends React.Component {
     console.log(event.target.value);
   }
 
-  signup(){
-    fetch('/signup')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        users: data
-      })
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.logIn(this.state);
+    this.setState({
+      username: '',
+      password: ''
     })
-    console.log('signup');
   }
+
   render() {
     return (
       <section id="LoginForm">
         <div className="container login-form">
           <div className="col-lg-6 mx-auto">
+          {this.props.message === true?<div className="text-center success">User successfully created!</div>: null }
             <div className="card">
-              <form onSubmit={this.getProfile}>
+              <form onSubmit={this.handleSubmit}>
                 <div className="card-body">
                     <div className="form-group font-weight-bold login-head">Log In</div>
                     <div className="form-group">
@@ -57,7 +43,7 @@ class Login extends React.Component {
                         <input type="password" id="password" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password}/>
                      </div>
                     <button type="submit" className="btn btn-primary">Login</button>
-                    <a href="#" className="btn btn-info" onClick={this.signup}> Create an account</a>
+                    <a href="#" className="btn btn-info" > Create an account</a>
                 </div>
               </form>
             </div>

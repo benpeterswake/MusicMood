@@ -3,7 +3,7 @@ class Signup extends React.Component {
     super(props)
     this.state={
       username: '',
-      password: '',
+      password_digest: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,11 +17,10 @@ class Signup extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state);
     this.props.signUp(this.state)
     this.setState({
       username: '',
-      password: ''
+      password_digest: ''
     })
   }
 
@@ -50,7 +49,7 @@ class Signup extends React.Component {
                           <div className="card-body" id="login-text">Join Music Mood today.
                             <div className="form-group" id="Signup">
                               <input type="text" id="username" className="form-control" placeholder="Username" onChange={this.handleChange} value={this.state.username} required/>
-                              <input type="password" id="password" className="form-control" placeholder="Password"  onChange={this.handleChange} value={this.state.password} required/>
+                              <input type="password" id="password_digest" className="form-control" placeholder="Password"  onChange={this.handleChange} value={this.state.password_digest} required/>
                               <button type="submit" className="btn btn-outline-secondary btn-lg btn-block" id="submit-btn">Sign Up</button>
                               <div>Have an account? <a href="#" className="btn btn-sm" id="login-link" onClick={() => this.props.toggleState('showSignup','showLogin')}>Login</a></div>
                             </div>

@@ -36,3 +36,9 @@
   width:100%;
   height: 400px;
 }
+
+.success {
+  font-size: 25px;
+  font-weight: bold;
+  color: #4FA2DB;
+}
