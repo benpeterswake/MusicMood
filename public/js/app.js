@@ -33,16 +33,9 @@ class App extends React.Component{
     this.beginSession = this.beginSession.bind(this)
   }
 
-<<<<<<< HEAD
   componentDidMount() {
     this.getSession()
   }
-=======
-              <Navigation />
-              <User />
-              <Posts />
-
->>>>>>> 1a392682e6f613138f8ad0beebf396df578932bc
 
   getSession(){
     fetch('/sessions')
