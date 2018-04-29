@@ -5,18 +5,14 @@ class Login extends React.Component {
       username: '',
       password: '',
       avatar: ''
-    }
+  }
+    this.getProfile = this.getProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
+
   }
 
-  handleChange(event){
-    this.setState({
-      [event.target.id]: event.target.value
-    })
-    console.log(event.target.value);
-  }
-
-  submitLogin(){
+  getProfile(event){
+      event.preventDefault()
       fetch('/profile')
       .then(res => res.json())
       .then(data => {
@@ -28,30 +24,32 @@ class Login extends React.Component {
       console.log('getting profile and all posts');
   }
 
+  handleChange(event){
+    this.setState({
+    [event.target.id]: event.target.value
+    })
+    console.log(event.target.value);
+  }
+
   render() {
     return (
       <section id="login-form">
-        <div className="loginForm">
+        <div className="login-form">
           <div className="col-lg-6 mx-auto">
             <div className="card">
-              <form onSubmit={this.submitLogin}>
+              <form onSubmit={this.getProfile}>
                 <div className="card-header">
                     <div className="card-body" id='login-text'>Log In</div>
-
                       <div className="form-group">
-                        <input type="text" id="login-username" className="form-control" placeholder="username" onChange={this.handleChange}
-                        value={this.state.username} />
-                      </div>
-
-                      <div className="form-group">
+                        <input type="text" id="login-username" className="form-control"             placeholder="username" onChange={this.handleChange}
+                         />
+                        </div>
+                        <div className="form-group">
                         <input type="password" id="login-password" className="form-control" placeholder="password" onChange={this.handleChange}
-                        value={this.state.password} />
-                      </div>
-
+                         />
+                        </div>
                         <button type="submit" className="btn btn-primary">Login</button>
-
-                      </div>
-
+                     </div>
               </form>
             </div>
           </div>
