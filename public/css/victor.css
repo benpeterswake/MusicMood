@@ -1,5 +1,5 @@
 #home {
-  border: 1px solid black;
+  overflow-x: hidden;
   height: 100vh;
 }
 
@@ -23,8 +23,10 @@
 }
 
 #intro {
-  margin-left: 120px;
-  margin-top: 220px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
   width: 100%;
   font-size: 18px;
   font-weight: 500;
@@ -33,14 +35,16 @@
 }
 
 #signup-form {
-  width: 680px;
-  margin-right: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
 }
 
 #signup-card {
   border: none;
   background-color: #ffffff;
-  margin-top: 350px;
   width: 400px;
 }
 

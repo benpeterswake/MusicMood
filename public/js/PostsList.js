@@ -52,7 +52,6 @@ class PostsList extends React.Component{
 
                               </div>
                             </div>
-
                           : ''
                         }
 

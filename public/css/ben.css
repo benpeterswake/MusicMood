@@ -18,8 +18,8 @@
   color:white;
 }
 
-#postForm ::placeholder{
-  color:white!important
+#PostForm::placeholder{
+  color:white
 }
 
 .user{

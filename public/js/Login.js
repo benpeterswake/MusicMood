@@ -51,7 +51,7 @@ class Login extends React.Component {
                 <div className="card-body">
                     <div className="form-group font-weight-bold login-head">Log In</div>
                     <div className="form-group">
-                        <input type="text" id="username" className="form-control"      placeholder="username" required onChange={this.handleChange} value={this.state.username}/>
+                        <input type="text" id="username" className="form-control" placeholder="username" required onChange={this.handleChange} value={this.state.username}/>
                     </div>
                     <div className="form-group">
                         <input type="password" id="password" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password}/>
