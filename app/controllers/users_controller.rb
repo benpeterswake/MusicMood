@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    p (user_params)
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -48,15 +49,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def login
-    user = User.find_by(username: params[:user][:username])
-    if user && user.authenticate(params[:user][:password])
-      render json: {status: 200, user: user}
-    else
-      render json: {status: 401, message: "Unauthorized"}
-    end
-  end
-
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
@@ -64,6 +56,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def login
+    user = User.find_by(username: params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
+      render json: {status: 200, user: user}
+    else
+      render json: {status: 401, message: "Unauthorized"}
     end
   end
 

@@ -6,23 +6,19 @@ class Auth extends React.Component {
       showLogin: false
     }
     this.toggleState = this.toggleState.bind(this)
-        console.log(this.state.showLogin);
   }
 
   toggleState(st1, st2){
-    console.log(st1);
-    console.log(st2);
     this.setState({
       [st1]: !this.state[st1],
       [st2]: !this.state[st2]
     })
-    console.log(this.state);
   }
-  
-   signUp(){
+
+   signUp(user){
      fetch('/signup', {
        method: 'POST',
-       body: JSON.stringify(this.state),
+       body: JSON.stringify(user),
        headers: {
          'Accept': 'application/json, text/plain, */*',
          'Content-Type': 'application/json'
@@ -30,7 +26,7 @@ class Auth extends React.Component {
      }).then(res => res.json())
        .then(data => {
        console.log(data);
-     }).catch(err0r => console.log(error))
+     }).catch(error => console.log(error))
    }
 
 

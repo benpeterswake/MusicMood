@@ -6,6 +6,7 @@ class Signup extends React.Component {
       password: '',
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event){
@@ -14,8 +15,9 @@ class Signup extends React.Component {
     })
   }
 
-  signup(event){
+  handleSubmit(event){
     event.preventDefault();
+    console.log(this.state);
     this.props.signUp(this.state)
     this.setState({
       username: '',

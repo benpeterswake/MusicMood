@@ -100,7 +100,6 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
-                
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
                 closeEdit = {this.closeEdit}
