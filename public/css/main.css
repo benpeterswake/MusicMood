@@ -1,6 +1,6 @@
 
 body{
-  background: #FAFAFA;
+  background: #E8EAED;
 }
 
 .post-image{
@@ -75,8 +75,6 @@ body{
 
 #PostsList .card-header {
   margin-top: 0px;
-  border-bottom: 1px solid #7092be;
-
   background-color: white;
 }
 
