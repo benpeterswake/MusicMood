@@ -6,7 +6,6 @@
   margin-left: 2.5px;
 }
 
-
 #edit-section{
     margin-bottom: 10px;
 }
@@ -27,4 +26,18 @@
 
 #login-new-account{
     margin-left: 5px;
+}
+
+.footer {
+    margin-bottom: 0;
+    height:150px;
+}
+
+#footer-logo{
+    margin-top: 20px;
+}
+
+.copyright{
+    font-size: 10px;
+    margin-left: -40px;
 }
