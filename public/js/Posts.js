@@ -27,6 +27,12 @@ class Posts extends React.Component{
         })
     }
 
+    toggleButtons(){
+      this.setState({
+
+      })
+    }
+
     closeEdit(x){
       this.setState({
         editPost: x
@@ -49,7 +55,6 @@ class Posts extends React.Component{
       this.setState({
         posts: updatePost
       })
-      console.log(posts);
     }
 
     handleCreateSubmit(post){
@@ -64,7 +69,7 @@ class Posts extends React.Component{
         return res.json()
       }).then(newPost => {
         this.handleCreate(newPost)
-        console.log(newPost)
+        this.getPosts()
       }).catch(error => console.log(error))
     }
 
@@ -85,6 +90,7 @@ class Posts extends React.Component{
     }
 
     deletePost (post, index) {
+      console.log('clicked');
       fetch('/posts/' + post.id, {
         method: 'DELETE'
       }). then(data => {
@@ -100,7 +106,6 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
-                
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
                 closeEdit = {this.closeEdit}
