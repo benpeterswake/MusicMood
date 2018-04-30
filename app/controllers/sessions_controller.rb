@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
         session[:current_user_id] = user.id
-        render json: {status: 200, user: user, session_id: session[:current_user_id]}
+        render json: Session.create(user.id)
       else
         render json: {status: 401, message: "Unauthorized"}
       end
