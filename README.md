@@ -1,29 +1,18 @@
-<<<<<<< HEAD
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
 # MusicMood
-an app where people can post their current music based on their mood.
->>>>>>> d848ab8d4854eea4ec27bf76074f6d22dc97b7af
+
+####
+MusicMood is a online community for people to connect via music and their moods. Users simply choose a mood and upload a video that matches their mood.
+---
+#### Live site: http://music-mood-app.herokuapp.com/
+
+#### Built With
+* Ruby on Rails
+* Javascript
+* SQL
+* React.js
+* HTML5, CSS3
+* Bootstrap
+---
+
+#### Wireframe
+![alt text](wireframe.png)
