@@ -18,27 +18,6 @@ class App extends React.Component{
       })
     }
   }
-  //   this.getSession()
-  // }
-
-  // getSession(){
-  //   fetch('/sessions')
-  //   .then(res => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //     if(data.status === 400){
-  //       this.setState({
-  //         session: false,
-  //       })
-  //     }else{
-  //       this.setState({
-  //         session: true,
-  //         username: Cookie.get('username')
-  //         use_id: Cookie.get('user_id')
-  //       })
-  //     }
-  //   }).catch(error => console.log(error))
-  // }
 
   beginSession(){
     this.setState({

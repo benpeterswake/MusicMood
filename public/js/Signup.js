@@ -4,6 +4,7 @@ class Signup extends React.Component {
     this.state={
       username: '',
       password_digest: '',
+      match:null,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -13,16 +14,47 @@ class Signup extends React.Component {
     this.setState({
       [event.target.id]: event.target.value
     })
+    fetch('/posts')
+    .then(res => res.json())
+    .then(data => {
+      for(let i=0; i<data.length; i++){
+        console.log(data[i].username);
+        if(this.state.username === ''){
+          this.setState({
+            match: null
+          })
+        }else if(data[i].username === this.state.username){
+          this.setState({
+            match: true
+          })
+          return true
+          console.log(this.state.match);
+        }else{
+          this.setState({
+            match: false
+          })
+          console.log(this.state.match);
+        }
+      }
+    })
+
   }
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.signUp(this.state)
-    this.setState({
-      username: '',
-      password_digest: ''
-    })
+    if(this.state.match === true){
+      console.log('user already exists');
+    }else{
+      this.props.signUp(this.state)
+      this.setState({
+        username: '',
+        password_digest: ''
+      })
+    }
+
   }
+
+
 
   render() {
     return (
@@ -49,6 +81,12 @@ class Signup extends React.Component {
                         <div className="row">
                           <div className="card-body" id="login-text">Join Music Mood today.
                             <div className="form-group" id="Signup">
+                              {this.state.match === true?<p class="error"><i class="fas fa-times-circle"></i>
+
+ Username already exists</p>: null}
+                              {this.state.match === false?<p class="available"><i class="fas fa-check-circle"></i>
+
+ Username is available</p>: null}
                               <input type="text" id="username" className="form-control" placeholder="Username" onChange={this.handleChange} value={this.state.username} required/>
                               <input type="password" id="password_digest" className="form-control" placeholder="Password"  onChange={this.handleChange} value={this.state.password_digest} required/>
                               <button type="submit" className="btn btn-outline-secondary btn-lg btn-block" id="submit-btn">Sign Up</button>
