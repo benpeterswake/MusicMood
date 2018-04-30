@@ -59,6 +59,9 @@
   border: none;
 }
 
+.username > .em {
+  margin-left: 5px;
+}
 
 #signup-header {
   background-color: #ffffff;
