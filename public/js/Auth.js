@@ -50,13 +50,15 @@ class Auth extends React.Component {
      .then(data => {
        console.log(data);
       if(data.status === 200){
-        console.log('loggin worked');
-        this.props.beginSession()
+        Cookies.set('user_id', data.session_id);
+        Cookies.set('username', data.user.username);
+        this.props.beginSession();
+      }else{
+        console.log('wrong pass');
       }
+
    }).catch(error => console.log(error))
   }
-
-
 
   render() {
     return (

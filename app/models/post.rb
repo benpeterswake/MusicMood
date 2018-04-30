@@ -1,5 +1,5 @@
 class Post
-  attr_reader :id, :username, :avatar, :post, :mood, :song
+  attr_reader :id, :user_id, :mood, :song
   if (ENV['DATABASE_URL'])
    uri = URI.parse(ENV['DATABASE_URL'])
    DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
@@ -9,9 +9,7 @@ class Post
 
   def initialize(opts={})
     @id = opts["id"].to_i
-    @username = opts["username"]
-    @avatar = opts["avatar"]
-    @post = opts["post"]
+    @username = opts["user_id"].to_i
     @mood = opts["mood"]
     @song = opts["song"]
   end
@@ -31,9 +29,9 @@ class Post
   def self.create(opts={})
     results = DB.exec(
       <<-SQL
-        INSERT INTO posts (username, avatar, post, mood, song)
-        VALUES ('#{opts["username"]}','#{opts["avatar"]}','#{opts["post_body"]}','#{opts["mood"]}','#{opts["song"]}')
-        RETURNING id, username, avatar, post, mood, song;
+        INSERT INTO posts (user_id, mood, song)
+        VALUES ('#{opts["user_id"]}','#{opts["mood"]}','#{opts["song"]}')
+        RETURNING id, user_id, mood, song;
       SQL
     )
     return Post.new(results.first)
@@ -48,9 +46,9 @@ class Post
     results = DB.exec(
       <<-SQL
         UPDATE posts
-        SET username='#{opts["username"]}', avatar='#{opts["avatar"]}', post='#{opts["post_body"]}', mood='#{opts["mood"]}', song='#{opts["song"]}'
+        SET user_id='#{opts["user_id"]}', mood='#{opts["mood"]}', song='#{opts["song"]}'
         WHERE id=#{id}
-        RETURNING id, username, avatar, post, mood, song;
+        RETURNING id, user_id, mood, song;
       SQL
     )
     return Post.new(results.first)

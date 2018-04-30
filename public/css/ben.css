@@ -18,8 +18,12 @@
   color:white;
 }
 
-#PostForm::placeholder{
+#PostForm ::placeholder{
   color:white
+}
+
+.error{
+  color: #FF0035;
 }
 
 .user{

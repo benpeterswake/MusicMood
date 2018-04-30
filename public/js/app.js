@@ -1,63 +1,49 @@
-class User extends React.Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-   return(
-     <div className="container">
-       <div className="col-lg-2 user">
-         <div className="card" id="user-card">
-           <div className="card-header">
-            <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png"
-            className="user-icon" />
-           </div>
-           <div className="card-body">
-              <h4>Welcome, Benjamin</h4>
-           </div>
-         </div>
-       </div>
-     </div>
-   )
-  }
-}
-
-
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       session: false,
-      username: null
+      user_id: null
     }
-    this.getSession = this.getSession.bind(this)
+    // this.getSession = this.getSession.bind(this)
     this.beginSession = this.beginSession.bind(this)
   }
 
   componentDidMount() {
-    this.getSession()
+    if(Cookies.get('user_id')){
+      this.setState({
+        session: true,
+        user_id: Cookies.get('user_id')
+      })
+    }
   }
+  //   this.getSession()
+  // }
 
-  getSession(){
-    fetch('/sessions')
-    .then(res => res.json())
-    .then((data) => {
-      console.log(data);
-      if(data.status === 400){
-        this.setState({
-          session: false,
-          username: null
-        })
-      }else{
-        this.setState({
-          session: true,
-          username: data.username
-        })
-      }
-    }).catch(error => console.log(error))
-  }
+  // getSession(){
+  //   fetch('/sessions')
+  //   .then(res => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     if(data.status === 400){
+  //       this.setState({
+  //         session: false,
+  //       })
+  //     }else{
+  //       this.setState({
+  //         session: true,
+  //         username: Cookie.get('username')
+  //         use_id: Cookie.get('user_id')
+  //       })
+  //     }
+  //   }).catch(error => console.log(error))
+  // }
 
   beginSession(){
-    this.componentDidMount()
+    this.setState({
+      session: true,
+      user_id: Cookies.get('user_id')
+    })
   }
 
   render(){
