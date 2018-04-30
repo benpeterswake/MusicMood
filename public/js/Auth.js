@@ -4,17 +4,26 @@ class Auth extends React.Component {
     this.state= {
       showSignup: true,
       showLogin: false,
-      afterSignup: false
+      afterSignup: false,
+      error: false
     }
     this.toggleState = this.toggleState.bind(this)
     this.signUp = this.signUp.bind(this)
     this.logIn = this.logIn.bind(this)
+    this.clearMessages = this.clearMessages.bind(this)
   }
 
   toggleState(st1, st2){
     this.setState({
       [st1]: !this.state[st1],
       [st2]: !this.state[st2]
+    })
+  }
+
+  clearMessages(){
+    this.setState({
+      afterSignup: false,
+      error: false
     })
   }
 
@@ -54,7 +63,9 @@ class Auth extends React.Component {
         Cookies.set('username', data.user.username);
         this.props.beginSession();
       }else{
-        console.log('wrong pass');
+        this.setState({
+          error: true
+        })
       }
 
    }).catch(error => console.log(error))
@@ -66,8 +77,8 @@ class Auth extends React.Component {
     return (
       <section id="Auth">
         {this.state.showLogin == true? <Navigation />: null}
-        {this.state.showSignup == true? <Signup signUp={this.signUp} toggleState={this.toggleState} />: null}
-        {this.state.showLogin == true? <Login logIn={this.logIn} message={this.state.afterSignup}  />: null}
+        {this.state.showSignup == true? <Signup signUp={this.signUp} clearMessages={this.clearMessages} toggleState={this.toggleState} />: null}
+        {this.state.showLogin == true? <Login logIn={this.logIn} clearMessages={this.clearMessages} error={this.state.error} toggleState={this.toggleState} message={this.state.afterSignup}  />: null}
       </section>
     )
   }
