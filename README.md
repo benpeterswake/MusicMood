@@ -13,6 +13,6 @@ MusicMood is a online community for people to connect via music and their moods.
 * HTML5, CSS3
 * Bootstrap
 ---
-
 #### Wireframe
-![alt text](wireframe.png)
+![Wireframe](/public/wireframe.png)
+---
