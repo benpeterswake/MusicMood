@@ -41,6 +41,7 @@ class Signup extends React.Component {
   }
 
   handleSubmit(event){
+    this.props.clearMessages()
     event.preventDefault();
     if(this.state.match === true){
       console.log('user already exists');
@@ -51,7 +52,6 @@ class Signup extends React.Component {
         password_digest: ''
       })
     }
-
   }
 
 
