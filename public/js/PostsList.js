@@ -17,30 +17,55 @@ class PostsList extends React.Component{
                   <div className="card" id="newsfeed">
                     {/* Show list template*/}
                     {
-                    this.props.editPost !== index ?
+                      this.props.editPost !== index ?
                       <div>
                         <div className="card-block">
-                          { post.user_id === Cookies.get("user_id")? <div className="card-subtitle">
+                          { post.user_id === Cookies.get("user_id")?
+
+                          <div className="card-subtitle">
                             <button type="button" className="badge float-right"
                               onClick = {() => this.props.deletePost(post, index)}><i class="fa fa-trash"></i></button>
 
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
                               </div>: null }
-                              <div className="card-header" id="post-header"> Mood: {post.mood}
+
+
+                              <div className="card-header" id="post-header">
+                                <blockquote className="blockquote mb-0">
+                                  <footer className="username">@{post.username} is feeling 
+                                    {
+                                      post.mood === "happy" ? <i className="em em-smiley"></i> : null
+                                    }
+                                    {
+                                      post.mood === "sad" ? <i className="em em-white_frowning_face"></i> : null
+                                    }
+                                    {
+                                      post.mood === "mad" ? <i className="em em-angry"></i> : null
+                                    }
+                                    {
+                                      post.mood === "chill" ? <i className="em em-beer"></i> : null
+                                    }
+                                    {
+                                      post.mood === "cute" ? <i className="em em-blush"></i> : null
+                                    }
+                                    {
+                                      post.mood === "cold sweat" ? <i className="em em-cold_sweat"></i> : null
+                                    }
+                                  </footer>
+                                </blockquote>
+
+
                               </div>
+
                             </div>
+
 
                             <div className="card-body">
                               {/*<div className="songTitle">Song Link: {post.song}</div>*/}
-                                <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                <div className="footer">
-                                  <blockquote className="blockquote mb-0">
-                                    <footer className="username">@{post.username}</footer>
-                                  </blockquote>
-                                </div>
+                              <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
-                        </div>
+                          </div>
                           : ''
                         }
 
