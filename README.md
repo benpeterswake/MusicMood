@@ -15,3 +15,4 @@ MusicMood is a online community for people to connect via music and their moods.
 ---
 #### Wireframe
 ![Wireframe](/public/wireframe.png)
+---
