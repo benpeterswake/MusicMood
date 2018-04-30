@@ -42,12 +42,12 @@ class Login extends React.Component {
                         <input type="password" id="password" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password}/>
                      </div>
                     <button type="submit" className="btn btn-primary">Login</button>
-                    <div id="signup-link">New to MusicMood? Create an account!
-                    <a href="#" className="btn btn-sm btn-outline-secondary" id="login-new-account" onClick={() => this.props.toggleState('showLogin', 'showSignup')}>Sign up!</a></div>
                 </div>
               </form>
             </div>
           </div>
+          <div className="text-center" id="signup-link">New to MusicMood? Create an account!
+          <a href="#" className="btn btn-sm btn-outline-secondary" id="login-new-account" onClick={() => this.props.toggleState('showLogin', 'showSignup')}>Sign up!</a></div>
         </div>
       </section>
     )
