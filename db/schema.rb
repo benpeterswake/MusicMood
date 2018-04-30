@@ -17,9 +17,7 @@ ActiveRecord::Schema.define(version: 2018_04_30_004123) do
 
   create_table "posts", id: false, force: :cascade do |t|
      t.serial "id", null: false
-     t.string "username", limit: 30
-     t.text "avatar"
-     t.text "post"
+     t.string "user_id", limit: 30
      t.text "mood"
      t.text "song"
    end
