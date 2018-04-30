@@ -24,7 +24,7 @@ body{
 }
 
 #PostList .card {
-  margin: 5px 0px 0px 0px;
+  margin: 25px 0px 0px 0px;
 }
 
 
@@ -44,8 +44,8 @@ body{
 
 #newsfeed {
   border-radius: 0;
-  margin: 0 auto;
   border-bottom: 1px solid #7092be;
+  margin-bottom: 20px;
 }
 
 .username {
