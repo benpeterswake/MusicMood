@@ -14,7 +14,7 @@ class Signup extends React.Component {
     this.setState({
       [event.target.id]: event.target.value
     })
-    fetch('/posts')
+    fetch('/users')
     .then(res => res.json())
     .then(data => {
       for(let i=0; i<data.length; i++){

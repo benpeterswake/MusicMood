@@ -32,6 +32,7 @@ class App extends React.Component{
       user_id: null
     })
     Cookies.remove('user_id')
+    Cookies.remove('username')
   }
 
   render(){
@@ -39,7 +40,6 @@ class App extends React.Component{
         this.state.session === false? <Auth beginSession={this.beginSession} /> :
         <div>
           <Navigation session={this.state.session} logout={this.endSession}/ >
-          <User />
           <Posts />
         </div>
       )

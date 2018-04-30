@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/posts/:id', to: 'posts#delete'
   put '/posts/:id', to: 'posts#update'
 
+  get '/users', to: 'users#index'
   post '/login', to: 'sessions#login'
   post '/signup', to: 'users#create'
 

@@ -3,31 +3,8 @@ class User extends React.Component{
     super(props)
     this.state = {
       username: Cookies.get('username'),
-      total: 0
+
     }
-    this.getPosts = this.getPosts.bind(this)
-  }
-
-  componentDidMount(){
-    this.getPosts()
-  }
-
-  getPosts(){
-    fetch('/posts')
-    .then(res => res.json())
-    .then(data => {
-      for(let i=0; i<data.length; i++){
-        console.log(data[i].user_id);
-          console.log(Cookies.get('user_id'));
-        if(data[i].user_id == Cookies.get('user_id')){
-          this.setState({
-            total: this.state.total+=1
-          })
-        }else{
-          console.log('no posts');
-        }
-      }
-    })
   }
 
   render(){
@@ -49,7 +26,7 @@ class User extends React.Component{
        <div className="col-lg-2 info">
          <div className="card">
            <div className="card-header user-card-top">
-            <h1>{this.state.total}</h1>
+            <h1>{this.props.total}</h1>
            </div>
            <div className="card-body">
               <h4>Total Posts</h4>

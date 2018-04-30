@@ -4,7 +4,8 @@ class Posts extends React.Component{
         this.state = {
             editPost: null,
             posts: [],
-            post: {}
+            post: {},
+            total:0
         }
 
         this.toggleState = this.toggleState.bind(this)
@@ -45,6 +46,19 @@ class Posts extends React.Component{
       .then(data => {
         this.setState({
           posts: data
+        })
+        let total = 0
+        for(let i=0; i<data.length; i++){
+          console.log(data[i].user_id);
+          console.log(Cookies.get('user_id'));
+          if(data[i].user_id == Cookies.get('user_id')){
+            total++
+          }else{
+            console.log('no posts');
+          }
+        }
+        this.setState({
+          total: total
         })
       })
     }
@@ -95,10 +109,11 @@ class Posts extends React.Component{
         method: 'DELETE'
       }). then(data => {
         this.setState({
+          total: this.state.total-1,
           posts: [
             ...this.state.posts.slice(0, index),
             ...this.state.posts.slice(index + 1)
-          ]
+          ],
         })
       })
     }
@@ -106,6 +121,7 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
+                <User total={this.state.total} />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
                 closeEdit = {this.closeEdit}
