@@ -22,13 +22,15 @@ class PostsList extends React.Component{
                         <div className="card-block">
                           { post.user_id === Cookies.get("user_id")? <div className="card-subtitle">
                             <button type="button" className="badge float-right"
-                              onClick = {() => this.props.deletePost(post, index)}><i class="far fa-trash-alt"></i></button>
+                              onClick = {() => this.props.deletePost(post, index)}><i class="fa fa-trash"></i></button>
+
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
                               </div>: null }
                               <div className="card-header" id="post-header"> Mood: {post.mood}
                               </div>
                             </div>
+
                             <div className="card-body">
                               {/*<div className="songTitle">Song Link: {post.song}</div>*/}
                                 <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
