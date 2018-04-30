@@ -19,16 +19,18 @@ class PostsList extends React.Component{
                     {
                       this.props.editPost !== index ?
                       <div>
-                        <div className="card-block">
-                          <div className="card-subtitle">
+                        <div className="card-block" id="post-card">
+
                             <button type="button" className="badge float-right"
-                              onClick = {() => this.props.deletePost(post, index)}><i class="far fa-trash-alt"></i></button>
+                              onClick = {() => this.props.deletePost(post, index)}><i class="fa fa-trash"></i></button>
+
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
-                              </div>
-                              <div className="card-header" id="post-header"> Mood: {post.mood}
-                              </div>
+
+                              <div className="card-header" id="post-header"> Mood: {post.mood}</div>
+
                             </div>
+
                             <div className="card-body">
                               <div className="songTitle">Song Title: {post.song}</div>
                                 <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
