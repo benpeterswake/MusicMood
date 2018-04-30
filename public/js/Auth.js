@@ -67,7 +67,7 @@ class Auth extends React.Component {
       <section id="Auth">
         {this.state.showLogin == true? <Navigation />: null}
         {this.state.showSignup == true? <Signup signUp={this.signUp} toggleState={this.toggleState} />: null}
-        {this.state.showLogin == true? <Login logIn={this.logIn} message={this.state.afterSignup}  />: null}
+        {this.state.showLogin == true? <Login logIn={this.logIn} toggleState={this.toggleState} message={this.state.afterSignup}  />: null}
       </section>
     )
   }
