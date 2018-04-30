@@ -14,7 +14,6 @@ class Login extends React.Component {
     this.setState({
     [event.target.id]: event.target.value
     })
-    console.log(event.target.value);
   }
 
   handleSubmit(event){

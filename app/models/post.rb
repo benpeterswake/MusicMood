@@ -9,13 +9,27 @@ class Post
 
   def initialize(opts={})
     @id = opts["id"].to_i
-    @username = opts["user_id"].to_i
+    @user_id = opts["user_id"].to_i
     @mood = opts["mood"]
     @song = opts["song"]
   end
 
   def self.all
-    results = DB.exec("SELECT * FROM posts ORDER BY id DESC;")
+    results = DB.exec(
+      <<-SQL
+        SELECT
+        users.*,
+        posts.id,
+        posts.mood,
+        posts.song,
+        posts.user_id
+        FROM users
+        JOIN posts
+        ON users.id = posts.user_id
+        ORDER BY posts.id DESC
+        LIMIT 50;
+      SQL
+    )
     results.each do |result|
       puts result
     end
