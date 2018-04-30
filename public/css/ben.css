@@ -21,16 +21,6 @@
   color:white
 }
 
-.info{
-  margin-top:370px;
-  left: 12%;
-  position: fixed;
-  text-align: center;
-}
-
-.top{
-  margin-top: 450px;
-}
 .info .user-card-top{
   color:white;
 }
@@ -55,6 +45,15 @@
   left: 12%;
   position: fixed;
   text-align: center;
+}
+.info{
+  margin-top:370px;
+  left: 12%;
+  position: fixed;
+  text-align: center;
+}
+.top{
+  margin-top: 430px!important;
 }
 .user-icon{
   width: 100px;

@@ -47,7 +47,7 @@ class User extends React.Component{
            {
              this.props.showProfile === true?
              <div className="card-body">
-                 <h4>Welcome, {this.state.user}</h4>
+                 <h4>{this.state.user}</h4>
                  <button onClick={this.props.toggleProfile} className="btn btn-outline-secondary">Edit Profile</button>
               </div>
                :
@@ -82,7 +82,7 @@ class User extends React.Component{
                 <h1>{this.props.total}</h1>
                </div>
                <div className="card-body">
-                  <h4>Total Posts</h4>
+                  <h4>Posts</h4>
                </div>
              </div>
            </div>
