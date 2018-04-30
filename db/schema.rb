@@ -17,15 +17,9 @@ ActiveRecord::Schema.define(version: 2018_04_30_004123) do
 
   create_table "posts", id: false, force: :cascade do |t|
     t.serial "id", null: false
-    t.string "user_id", limit: 30
+    t.integer "user_id"
     t.text "mood"
     t.text "song"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 end

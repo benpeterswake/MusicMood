@@ -41,6 +41,7 @@ class App extends React.Component{
         <div>
           <Navigation session={this.state.session} logout={this.endSession}/ >
           <Posts />
+          <Footer />
         </div>
       )
   }
