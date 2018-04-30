@@ -93,7 +93,6 @@ render(){
                     {
                         this.state.song != '' && this.state.mood != '' ? <button type="submit" className="btn btn-primary">Submit Edits</button> :null
                     }
-
                    <button onClick={()=> this.props.closeEdit(null)} className="btn btn-default">Cancel</button>
             </div>
            </form>

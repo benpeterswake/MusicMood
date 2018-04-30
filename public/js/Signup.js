@@ -53,18 +53,16 @@ class Signup extends React.Component {
     }
   }
 
-
-
   render() {
     return (
       <div id="home">
         <div className="row" id="home">
           <div className="col" id="left-home">
             <div id="intro">
-              <p><img src="musiclogo.png" className="d-inline-block align-top" width="250px" alt=""/></p>
-              <p><img src="search.png" alt="search" height="30px" width="35px"/> &nbsp;Use your mood to discover music</p>
-              <p><img src="people.png" alt="search" height="25px" width="35px"/> &nbsp; See what other people are listening too</p>
-              <p><img src="conversation.png" alt="search" height="25px" width="35px"/> &nbsp; Enjoy new music with friends</p>
+              <p><img src="musiclogo.png" className="d-inline-block align-top logo" width="250px" alt=""/></p>
+              <p><img src="search.png" alt="search" height="35px" width="35px"/> &nbsp;Use your mood to discover music</p>
+              <p><img src="people.png" alt="search" height="35px" width="35px"/> &nbsp; See what other people are listening too</p>
+              <p><img src="conversation.png" alt="search" height="35px" width="35px"/> &nbsp; Enjoy new music with friends</p>
             </div>
           </div>
           <div className="col" id="right-home">
