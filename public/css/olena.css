@@ -10,6 +10,14 @@
     border: 3px solid #343A40;
 }
 
-#user-card{
-    border: 3px solid #343A40;
+#edit-section{
+    margin-bottom: 10px;
+}
+#EditForm input {
+    border: none;
+    font-size: 15px;
+}
+
+#edit-header {
+    background-color: #60a5ff;
 }

@@ -2,21 +2,20 @@ class EditForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            username: '',
-            avatar: '',
-            post_body: '',
+            user_id: Cookies.get('user_id'),
             mood: '',
-            song: ''
+            song: '',
+            error: false
         }
         this.handleChange = this.handleChange.bind(this)
-        this.submitEdit = this.submitEdit.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+
     }
 
     componentDidMount(){
         this.setState({
-              username: this.props.post.username,
-              avatar: this.props.post.avatar,
-              post_body: this.props.post.post,
+              user_id: this.props.post.user_id,
               mood: this.props.post.mood,
               song: this.props.post.song,
               id: this.props.post.id
@@ -27,38 +26,82 @@ class EditForm extends React.Component{
       this.setState({
         [event.target.id]: event.target.value
       })
-      console.log(this.state);
     }
 
-    submitEdit(event){
-      event.preventDefault()
-      console.log(this.state);
-      this.props.handleUpdateSubmit(this.state)
+    handleClick(mood){
+      this.setState({
+        mood: mood
+      })
     }
 
-    render(){
-        return(
-            <section id="EditForm">
-             <div className="container">
-              <div className="col-lg-12 mx-auto">
-                <div className="card">
-                 <form onSubmit={this.submitEdit}>
-                  <div className="card-header">
-                   <input type="text" className="form-control" id="mood" value={this.state.mood} onChange={this.handleChange} placeholder="Mood" />
+    handleSubmit(event){
+      if(this.state.mood === ''){
+        this.setState({
+          error: true
+        })
+      }else{
+        event.preventDefault()
+        this.props.handleUpdateSubmit(this.state)
+        this.setState({
+          mood: '',
+          song: ''
+        });
+    }
+}
+
+render(){
+    return(
+        <section id="edit-section">
+         <div className="container">
+          <div className="col-lg-12 mx-auto">
+            <div className="card">
+             <form id="EditForm" onSubmit={this.handleSubmit}>
+              <div className="card-header" id="edit-header">
+              {this.state.error === true?<p className="error">Please select a mood</p>: null}
+                <div className="row">
+                  <div className="col-lg-2">
+                  {this.state.mood === "happy"?<span id="active" onClick={()=> this.handleClick('')}><i className="em em-smiley"></i></span>
+                  :<span onClick={()=> this.handleClick("happy")}><i className="em em-smiley"></i></span>}
                   </div>
-
-                  <div className="card-body">
-                   <div className="form-group">
-                    <input type="text" className="form-control card-text" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Song" />
-                   </div>
-                    <button type="submit" className="btn btn-primary">Submit Edits</button> <button onClick={()=> this.props.closeEdit(null)} className="btn btn-default">Cancel</button>
-                </div>
-               </form>
+                  <div className="col-lg-2">
+                  {this.state.mood === "sad" ? <span id="active" onClick={()=> this.handleClick('')}><i className="em em-white_frowning_face"></i></span>
+                  : <span onClick={()=> this.handleClick("sad")}><i className="em em-white_frowning_face"></i></span>}
+                  </div>
+                  <div className="col-lg-2">
+                  {this.state.mood === "mad" ? <span id="active" onClick={()=> this.handleClick('')}><i className="em em-angry"></i></span>
+                  :<span onClick={()=> this.handleClick("mad")}><i className="em em-angry"></i></span>}
+                  </div>
+                  <div className="col-lg-2">
+                  {this.state.mood === "chill" ? <span id="active" onClick={()=> this.handleClick('')}><i className="em em-beer"></i></span>
+                  : <span onClick={()=> this.handleClick("chill")}><i className="em em-beer"></i></span>}
+                  </div>
+                  <div className="col-lg-2">
+                  {this.state.mood === "cute" ? <span id="active" onClick={()=> this.handleClick('')}><i className="em em-blush"></i></span>
+                  : <span onClick={()=> this.handleClick("cute")}><i className="em em-blush"></i></span>}
+                  </div>
+                  <div className="col-lg-2">
+                  {this.state.mood === "cold sweat" ? <span id="active" onClick={()=> this.handleClick('')}><i className="em em-cold_sweat"></i></span>
+                  : <span onClick={()=> this.handleClick("cold sweat")}><i className="em em-cold_sweat"></i></span>}
+                  </div>
+               </div>
               </div>
-             </div>
+              <div className="card-body" id="edit-card">
+               <div className="form-group">
+                <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." required />
+               </div>
+               <hr/>
+                    {
+                        this.state.song != '' && this.state.mood != '' ? <button type="submit" className="btn btn-primary">Submit Edits</button> :null
+                    }
+
+                   <button onClick={()=> this.props.closeEdit(null)} className="btn btn-default">Cancel</button>
             </div>
-        </section>
-        )
+           </form>
+          </div>
+         </div>
+        </div>
+    </section>
+    )
     }
 
 }
