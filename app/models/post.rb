@@ -27,7 +27,7 @@ class Post
         JOIN posts
         ON users.id = posts.user_id
         ORDER BY posts.id DESC
-        LIMIT 50;
+        LIMIT 40;
       SQL
     )
     results.each do |result|

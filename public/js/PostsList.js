@@ -4,6 +4,7 @@ class PostsList extends React.Component{
       <section id="PostList">
         <div className="container">
           <div className="col-lg-6 mx-auto">
+          <button className="btn"><i class="fas fa-redo"></i> Refresh Feed</button>
             {
               this.props.posts.map((post, index) => {
                 let parsedURL = null
@@ -17,7 +18,6 @@ class PostsList extends React.Component{
                 }
                 return (
                   <div className="card" id="newsfeed">
-                    {/* Show list template*/}
                     {
                       this.props.editPost !== index ?
                       <div>

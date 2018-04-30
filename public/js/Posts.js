@@ -126,6 +126,7 @@ class Posts extends React.Component{
                 <User toggleProfile={this.toggleProfile} showProfile={this.state.showProfile} total={this.state.total} />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
+                getPosts={this.getPosts}
                 closeEdit = {this.closeEdit}
                 handleUpdateSubmit={this.handleUpdateSubmit}
                 post={this.state.post}

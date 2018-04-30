@@ -2,7 +2,9 @@ class User extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      username: Cookies.get('username'),
+      user: Cookies.get('username'),
+      avatar: 'https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png',
+      match: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -15,22 +17,19 @@ class User extends React.Component{
     .then(res => res.json())
     .then(data => {
       for(let i=0; i<data.length; i++){
-        console.log(data[i].username);
-        if(this.state.username === ''){
+        if(this.state.user === ''){
           this.setState({
             match: null
           })
-        }else if(data[i].username === this.state.username){
+        }else if(data[i].username === this.state.user){
           this.setState({
             match: true
           })
           return true
-          console.log(this.state.match);
         }else{
           this.setState({
             match: false
           })
-          console.log(this.state.match);
         }
       }
     })
@@ -42,22 +41,24 @@ class User extends React.Component{
        <div className="col-lg-2 user">
          <div className="card" id="user-card">
            <div className="card-header user-card-top">
-            <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png"
+            <img src={this.state.avatar}
             className="user-icon" />
            </div>
            {
              this.props.showProfile === true?
              <div className="card-body">
-                 <h4>Welcome, {this.state.username}</h4>
+                 <h4>Welcome, {this.state.user}</h4>
                  <button onClick={this.props.toggleProfile} className="btn btn-outline-secondary">Edit Profile</button>
               </div>
                :
              <div className="card-body">
                 <form>
                   <label>Username</label>
-                  <input type="text" onChange={this.handleChange} value={this.state.username}/>
+                  {this.state.match === true?<div class="error"><i class="fas fa-times-circle"></i> Username already exists</div>: null}
+                  {this.state.match === false?<div class="available"><i class="fas fa-check-circle"></i> Username is available</div>: null}
+                  <input type="text" id="user" onChange={this.handleChange} value={this.state.user} required/>
+                  <button onClick={this.props.toggleProfile} className="cancel btn btn-outline-secondary">Cancel</button>
                 </form>
-              <button onClick={this.props.toggleProfile} className="cancel btn btn-outline-secondary">Cancel</button>
              </div>
            }
          </div>
@@ -70,7 +71,7 @@ class User extends React.Component{
                 <h1>{this.props.total}</h1>
                </div>
                <div className="card-body">
-                  <h4>Total Posts</h4>
+                  <h4>Posts</h4>
                </div>
              </div>
            </div>
