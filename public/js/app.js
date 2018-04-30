@@ -7,6 +7,7 @@ class App extends React.Component{
     }
     // this.getSession = this.getSession.bind(this)
     this.beginSession = this.beginSession.bind(this)
+    this.endSession = this.endSession.bind(this)
   }
 
   componentDidMount() {
@@ -46,11 +47,19 @@ class App extends React.Component{
     })
   }
 
+  endSession(){
+    this.setState({
+      session: false,
+      user_id: null
+    })
+    Cookies.remove('user_id')
+  }
+
   render(){
       return(
         this.state.session === false? <Auth beginSession={this.beginSession} /> :
         <div>
-          <Navigation/ >
+          <Navigation session={this.state.session} logout={this.endSession}/ >
           <User />
           <Posts />
         </div>

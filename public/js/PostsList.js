@@ -7,40 +7,40 @@ class PostsList extends React.Component{
             {
               this.props.posts.map((post, index) => {
                 let parsedURL= null
-                if(post.song.includes("youtube")){
-                  let youtubeURL = post.song.split('=')
+                if(post.song!= null && post.song.includes("youtube")){
+                  let youtubeURL = post.song.split('v=')
                   parsedURL= 'https://www.youtube.com/embed/' + youtubeURL[1];
                 } else {
-                  return ("Please insert a youtube or spotify player link")
+                  console.log("Please insert a youtube or spotify player link");
                 }
                 return (
                   <div className="card" id="newsfeed">
                     {/* Show list template*/}
                     {
-                      this.props.editPost !== index ?
+                    this.props.editPost !== index ?
                       <div>
-                        <div className="card-block" id="post-card">
-
+                        <div className="card-block">
+                          { post.user_id === Cookies.get("user_id")? <div className="card-subtitle">
                             <button type="button" className="badge float-right"
                               onClick = {() => this.props.deletePost(post, index)}><i class="fa fa-trash"></i></button>
 
                               <span className="pencil float-right"
                                 onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
-
-                              <div className="card-header" id="post-header"> Mood: {post.mood}</div>
-
+                              </div>: null }
+                              <div className="card-header" id="post-header"> Mood: {post.mood}
+                              </div>
                             </div>
 
                             <div className="card-body">
-                              <div className="songTitle">Song Title: {post.song}</div>
+                              {/*<div className="songTitle">Song Link: {post.song}</div>*/}
                                 <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <div className="footer">
                                   <blockquote className="blockquote mb-0">
-                                    <footer className="username">@{post.username}Benpeterscode</footer>
+                                    <footer className="username">@{post.username}</footer>
                                   </blockquote>
                                 </div>
-                              </div>
                             </div>
+                        </div>
                           : ''
                         }
 
