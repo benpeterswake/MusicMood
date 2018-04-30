@@ -3,7 +3,7 @@ class Login extends React.Component {
     super(props)
     this.state={
       username: '',
-      password_digest: '',
+      password: '',
   }
 
     this.handleChange = this.handleChange.bind(this)
@@ -21,7 +21,7 @@ class Login extends React.Component {
     this.props.logIn(this.state);
     this.setState({
       username: '',
-      password_digest: ''
+      password: ''
     })
   }
 
@@ -39,7 +39,7 @@ class Login extends React.Component {
                         <input type="text" id="username" className="form-control" placeholder="username" required onChange={this.handleChange} value={this.state.username}/>
                     </div>
                     <div className="form-group">
-                        <input type="password" id="password_digest" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password_digest}/>
+                        <input type="password" id="password" className="form-control" placeholder="password" required onChange={this.handleChange} value={this.state.password}/>
                      </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                     <div id="signup-link">New to MusicMood? Create an account!
