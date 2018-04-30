@@ -57,11 +57,13 @@ class App extends React.Component{
 
   render(){
       return(
-        this.state.session === false? <Auth beginSession={this.beginSession} /> :
-        <div>
-          <Navigation session={this.state.session} logout={this.endSession}/ >
-          <User />
-          <Posts />
+         this.state.session === false? <Auth beginSession={this.beginSession} />
+          :
+       <div>
+         <Navigation session={this.state.session} logout={this.endSession}/ >
+         <User />
+         <Posts />
+         <Footer />
         </div>
       )
   }
