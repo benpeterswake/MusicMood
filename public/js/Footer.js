@@ -2,7 +2,6 @@ class Footer extends React.Component {
   render () {
     return (
       <div>
-      <div>
       <nav className="footer navbar-dark bg-dark absolute-bottom">
 
         <div className="col-lg-8 mx-auto text-center">

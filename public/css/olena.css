@@ -29,15 +29,17 @@
 }
 
 .footer {
+    margin-top: 80px;
     margin-bottom: 0;
     height:150px;
 }
 
 #footer-logo{
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .copyright{
     font-size: 10px;
+    color:white;
     margin-left: -40px;
 }
