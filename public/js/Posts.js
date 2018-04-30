@@ -3,6 +3,7 @@ class Posts extends React.Component{
         super(props)
         this.state = {
             editPost: null,
+            showProfile: true,
             posts: [],
             post: {},
             total:0
@@ -15,6 +16,7 @@ class Posts extends React.Component{
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
+        this.toggleProfile = this.toggleProfile.bind(this)
     }
 
     componentDidMount(){
@@ -28,9 +30,9 @@ class Posts extends React.Component{
         })
     }
 
-    toggleButtons(){
+    toggleProfile(){
       this.setState({
-
+          showProfile: !this.state.showProfile
       })
     }
 
@@ -121,7 +123,7 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
-                <User total={this.state.total} />
+                <User toggleProfile={this.toggleProfile} showProfile={this.state.showProfile} total={this.state.total} />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
                 closeEdit = {this.closeEdit}

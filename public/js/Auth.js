@@ -71,8 +71,6 @@ class Auth extends React.Component {
    }).catch(error => console.log(error))
   }
 
-
-
   render() {
     return (
       <section id="Auth">

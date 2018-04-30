@@ -37,7 +37,6 @@ class Signup extends React.Component {
         }
       }
     })
-
   }
 
   handleSubmit(event){

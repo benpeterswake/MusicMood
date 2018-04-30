@@ -48,7 +48,7 @@ class PostForm extends React.Component{
                 <div className="card">
                   <form onSubmit={this.handleSubmit}>
                   <div className="card-header">
-                    {this.state.error === true?<p className="error">Please select a mood</p>: null}
+                    {this.state.error === true?<p className="white text-center">Please select a mood</p>: null}
                     <div className="row">
                       <div className="col-lg-2">
                       {this.state.mood === "happy"?<span id="active" onClick={()=> this.handleClick('')}><i class="em em-smiley"></i></span>

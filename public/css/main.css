@@ -49,7 +49,7 @@ body{
 }
 
 .username {
-  font-size: .8em;
+  font-size: 1em;
 }
 
 #sidebar {
@@ -118,7 +118,6 @@ span {
 
 .footer {
   margin-top: 25px;
-  color: white;
 }
 
 .footer a{

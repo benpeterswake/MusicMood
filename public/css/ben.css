@@ -28,10 +28,21 @@
   text-align: center;
 }
 
+.top{
+  margin-top: 420px;
+}
+
+
 .info .user-card-top{
   color:white;
 }
 
+.white{
+  color:white;
+}
+.cancel{
+  margin-top: 12px;
+}
 .error{
   color: #FF0035;
 }
@@ -53,7 +64,7 @@
 
 .video{
   width:100%;
-  height: 400px;
+  height: 350px;
 }
 .success {
   color: #4FA2DB;
