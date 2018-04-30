@@ -17,7 +17,9 @@
 #edit-header {
     background-color: #60a5ff;
 }
-
+#edit-card .btn{
+  margin-left: 5px;
+}
 #signup-link {
   font-weight: bold;
   font-size: 18px;
@@ -29,15 +31,17 @@
 }
 
 .footer {
+    margin-top: 80px;
     margin-bottom: 0;
-    height:150px;
+    height:220px;
 }
 
 #footer-logo{
-    margin-top: 20px;
+  margin-top: 50px;
 }
 
 .copyright{
     font-size: 10px;
+    color:white;
     margin-left: -40px;
 }

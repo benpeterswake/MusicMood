@@ -48,7 +48,7 @@ class PostForm extends React.Component{
                 <div className="card">
                   <form onSubmit={this.handleSubmit}>
                   <div className="card-header">
-                    {this.state.error === true?<p className="error">Please select a mood</p>: null}
+                    {this.state.error === true?<p className="white text-center">Please select a mood</p>: null}
                     <div className="row">
                       <div className="col-lg-2">
                       {this.state.mood === "happy"?<span id="active" onClick={()=> this.handleClick('')}><i class="em em-smiley"></i></span>
@@ -79,7 +79,7 @@ class PostForm extends React.Component{
                   </div>
                   <div className="card-body">
                     <div className="form-group">
-                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="What's your song..." required/>
+                      <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Post a YouTube link, or tell us how you're feeling..." required/>
                     </div>
                     <hr/>
 

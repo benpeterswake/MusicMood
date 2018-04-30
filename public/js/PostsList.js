@@ -6,12 +6,14 @@ class PostsList extends React.Component{
           <div className="col-lg-6 mx-auto">
             {
               this.props.posts.map((post, index) => {
-                let parsedURL= null
+                let parsedURL = null
+                let parsedPost = null
                 if(post.song!= null && post.song.includes("youtube")){
                   let youtubeURL = post.song.split('v=')
+                  parsedPost = youtubeURL[0].split('http')
                   parsedURL= 'https://www.youtube.com/embed/' + youtubeURL[1];
                 } else {
-                  console.log("Please insert a youtube or spotify player link");
+                  console.log("no link");
                 }
                 return (
                   <div className="card" id="newsfeed">
@@ -33,7 +35,7 @@ class PostsList extends React.Component{
 
                               <div className="card-header" id="post-header">
                                 <blockquote className="blockquote mb-0">
-                                  <footer className="username">@{post.username} is feeling 
+                                  <footer className="username">@{post.username} is feeling
                                     {
                                       post.mood === "happy" ? <i className="em em-smiley"></i> : null
                                     }
@@ -62,8 +64,14 @@ class PostsList extends React.Component{
 
 
                             <div className="card-body">
-                              {/*<div className="songTitle">Song Link: {post.song}</div>*/}
-                              <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                              {
+                                parsedURL?
+                                <div>
+                                <div className="videoTitle">{parsedPost[0]}</div>
+                                <iframe className="video" src={parsedURL} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                                :<div className="songTitle">{post.song}</div>
+                              }
                             </div>
                           </div>
                           : ''

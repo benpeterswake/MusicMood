@@ -29,8 +29,9 @@ body{
 
 
 #active {
-  background-color: #54A7FF;
-  padding:20px 10px 20px 10px;
+  background-color: white;
+  border-radius: 50%;
+  padding:12px 10px 12px 10px;
 }
 
 .postForm{
@@ -49,7 +50,7 @@ body{
 }
 
 .username {
-  font-size: .8em;
+  font-size: 1em;
 }
 
 #sidebar {
@@ -99,6 +100,18 @@ span {
   color: white;
 }
 
+.songTitle{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.videoTitle{
+  padding-bottom: 15px;
+  font-size: 20px;
+}
+
 .pencil {
   font-size: 15px;
   color: white;
@@ -118,7 +131,6 @@ span {
 
 .footer {
   margin-top: 25px;
-  color: white;
 }
 
 .footer a{
