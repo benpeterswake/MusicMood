@@ -4,7 +4,7 @@ class PostsList extends React.Component{
       <section id="PostList">
         <div className="container">
           <div className="col-lg-6 mx-auto">
-          <button className="btn"><i class="fas fa-redo"></i> Refresh Feed</button>
+          <button onClick={this.props.refresh} className="btn"><i class="fas fa-redo"></i> Refresh Feed</button> {this.props.showSpinner?<span><img src="https://lul.org/wp-content/uploads/2016/12/cm_loader_300x300.gif" width="50px"/></span>: null}
             {
               this.props.posts.map((post, index) => {
                 let parsedURL = null
@@ -32,7 +32,6 @@ class PostsList extends React.Component{
                                 onClick = {() => this.props.toggleState(index, post)} ><i class="far fa-edit"></i></span>
                               </div>: null }
 
-
                               <div className="card-header" id="post-header">
                                 <blockquote className="blockquote mb-0">
                                   <footer className="username">@{post.username} is feeling
@@ -56,13 +55,8 @@ class PostsList extends React.Component{
                                     }
                                   </footer>
                                 </blockquote>
-
-
                               </div>
-
                             </div>
-
-
                             <div className="card-body">
                               {
                                 parsedURL?

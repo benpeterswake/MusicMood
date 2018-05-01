@@ -81,8 +81,7 @@ class PostForm extends React.Component{
                     <div className="form-group">
                       <input type="text" className="form-control" id="song" value={this.state.song} onChange={this.handleChange} placeholder="Post a YouTube link, or tell us how you're feeling..." required/>
                     </div>
-                    <hr/>
-
+                      <hr/>
                       {this.state.song != '' ? <button type="submit" className="btn btn-primary">Post</button> :null }
                     </div>
                   </form>

@@ -3,6 +3,7 @@ class Posts extends React.Component{
         super(props)
         this.state = {
             editPost: null,
+            showSpinner: false,
             posts: [],
             post: {},
             total:0
@@ -15,6 +16,7 @@ class Posts extends React.Component{
         this.handleUserUpdate = this.handleUserUpdate.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
+        this.refresh = this.refresh.bind(this)
     }
 
     componentDidMount(){
@@ -115,6 +117,15 @@ class Posts extends React.Component{
       }).catch(error => console.log(error))
     }
 
+    refresh(){
+      this.setState({
+        showSpinner: true
+      })
+      setTimeout(() => {
+          location.reload()
+      }, 1000)
+    }
+
     deletePost (post, index) {
       console.log('clicked');
       fetch('/posts/' + post.id, {
@@ -137,7 +148,8 @@ class Posts extends React.Component{
                 <Trend />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
-                getPosts={this.getPosts}
+                showSpinner={this.state.showSpinner}
+                refresh={this.refresh}
                 closeEdit = {this.closeEdit}
                 handleUpdateSubmit={this.handleUpdateSubmit}
                 post={this.state.post}
