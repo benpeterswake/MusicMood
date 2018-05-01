@@ -69,7 +69,7 @@
   text-align: center;
 }
 .info{
-  margin-top:40px;
+  margin-top:25px;
 }
 
 .user-icon{
@@ -86,4 +86,20 @@
 .card-body li{
   text-align: left;
   padding: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .user{
+    margin: 100px auto;
+    width: 100%;
+    right:0;
+    position: relative;
+    text-align: center;
+  }
+  .trend{
+    margin: 100px auto;
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
 }
