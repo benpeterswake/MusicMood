@@ -42,7 +42,7 @@ class PostForm extends React.Component{
 
     render(){
         return(
-          <section id="PostForm">
+          <section id="PostForm" className="hidden-xs-down">
             <div className="container postForm">
               <div className="col-lg-6 mx-auto">
                 <div className="card">
