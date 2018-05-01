@@ -3,8 +3,10 @@ class Posts extends React.Component{
         super(props)
         this.state = {
             editPost: null,
+            showProfile: true,
             posts: [],
-            post: {}
+            post: {},
+            total:0
         }
 
         this.toggleState = this.toggleState.bind(this)
@@ -14,6 +16,7 @@ class Posts extends React.Component{
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
+        this.toggleProfile = this.toggleProfile.bind(this)
     }
 
     componentDidMount(){
@@ -25,6 +28,12 @@ class Posts extends React.Component{
             editPost: index,
             post: post
         })
+    }
+
+    toggleProfile(){
+      this.setState({
+          showProfile: !this.state.showProfile
+      })
     }
 
     closeEdit(x){
@@ -40,6 +49,19 @@ class Posts extends React.Component{
         this.setState({
           posts: data
         })
+        let total = 0
+        for(let i=0; i<data.length; i++){
+          console.log(data[i].user_id);
+          console.log(Cookies.get('user_id'));
+          if(data[i].user_id == Cookies.get('user_id')){
+            total++
+          }else{
+            console.log('no posts');
+          }
+        }
+        this.setState({
+          total: total
+        })
       })
     }
 
@@ -49,7 +71,6 @@ class Posts extends React.Component{
       this.setState({
         posts: updatePost
       })
-      console.log(posts);
     }
 
     handleCreateSubmit(post){
@@ -64,7 +85,7 @@ class Posts extends React.Component{
         return res.json()
       }).then(newPost => {
         this.handleCreate(newPost)
-        console.log(newPost)
+        this.getPosts()
       }).catch(error => console.log(error))
     }
 
@@ -85,14 +106,16 @@ class Posts extends React.Component{
     }
 
     deletePost (post, index) {
+      console.log('clicked');
       fetch('/posts/' + post.id, {
         method: 'DELETE'
       }). then(data => {
         this.setState({
+          total: this.state.total-1,
           posts: [
             ...this.state.posts.slice(0, index),
             ...this.state.posts.slice(index + 1)
-          ]
+          ],
         })
       })
     }
@@ -100,8 +123,10 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
+                <User toggleProfile={this.toggleProfile} showProfile={this.state.showProfile} total={this.state.total} />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
+                getPosts={this.getPosts}
                 closeEdit = {this.closeEdit}
                 handleUpdateSubmit={this.handleUpdateSubmit}
                 post={this.state.post}

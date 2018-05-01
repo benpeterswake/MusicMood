@@ -1,50 +1,50 @@
-class User extends React.Component{
+class App extends React.Component{
   constructor(props){
     super(props)
-
-    this.login = this.login.bind(this)
-  }
-  login(){
-    fetch('/signup')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        users: data
-      })
-    })
-    console.log('login');
-
-  }
-  render(){
-   return(
-     <div className="container">
-       <div className="col-lg-2 user">
-         <div className="card">
-           <div className="card-header">
-            <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png"
-            className="user-icon" />
-           </div>
-           <div className="card-body">
-              <h4>Welcome, Benjamin</h4>
-              <button onClick={this.login}>Login with spotify</button>
-           </div>
-         </div>
-      </div>
-    </div>
-   )
-  }
-}
-
-
-class App extends React.Component{
-    render(){
-        return(
-            <div>
-                <Navigation />
-                <Signup />
-            </div>
-        )
+    this.state = {
+      session: false,
+      user_id: null
     }
+    // this.getSession = this.getSession.bind(this)
+    this.beginSession = this.beginSession.bind(this)
+    this.endSession = this.endSession.bind(this)
+  }
+
+  componentDidMount() {
+    if(Cookies.get('user_id')){
+      this.setState({
+        session: true,
+        user_id: Cookies.get('user_id')
+      })
+    }
+  }
+
+  beginSession(){
+    this.setState({
+      session: true,
+      user_id: Cookies.get('user_id')
+    })
+  }
+
+  endSession(){
+    this.setState({
+      session: false,
+      user_id: null
+    })
+    Cookies.remove('user_id')
+    Cookies.remove('username')
+  }
+
+  render(){
+      return(
+        this.state.session === false? <Auth beginSession={this.beginSession} /> :
+        <div>
+          <Navigation session={this.state.session} logout={this.endSession}/ >
+          <Posts />
+          <Footer />
+        </div>
+      )
+  }
 }
 
 ReactDOM.render(

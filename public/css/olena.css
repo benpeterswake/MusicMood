@@ -1,0 +1,47 @@
+.login-form {
+ margin: 0 auto;
+ margin-top: 100px;
+}
+.login-head{
+  margin-left: 2.5px;
+}
+
+#edit-section{
+    margin-bottom: 10px;
+}
+#EditForm input {
+    border: none;
+    font-size: 15px;
+}
+
+#edit-header {
+    background-color: #60a5ff;
+}
+#edit-card .btn{
+  margin-left: 5px;
+}
+#signup-link {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+#login-new-account{
+    margin-left: 5px;
+}
+
+.footer {
+    margin-top: 80px;
+    margin-bottom: 0;
+    height:220px;
+}
+
+#footer-logo{
+  margin-top: 50px;
+}
+
+.copyright{
+    font-size: 10px;
+    color:white;
+    margin-left: -40px;
+}
