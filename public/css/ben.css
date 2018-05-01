@@ -2,6 +2,10 @@
   font-size: 18px;
 }
 
+#user{
+  width:100%;
+}
+
 #PostForm .card {
   background-color: #60a5ff;
 }
@@ -24,6 +28,9 @@
 .info .user-card-top{
   color:white;
 }
+.trend .user-card-top{
+  color:white;
+}
 
 .white{
   color:white;
@@ -31,8 +38,15 @@
 .cancel{
   margin-top: 10px;
 }
+.left{
+  margin-left: 5px;
+}
 .error{
   color: #FF0035;
+}
+.small{
+  color: grey;
+  font-size: 15px;
 }
 .available{
   color: green;
@@ -43,26 +57,33 @@
 .user{
   margin-top: 100px;
   left: 12%;
+  width: 20%;
+  position: fixed;
+  text-align: center;
+}
+.trend{
+  margin-top: 100px;
+  right: 12%;
+  width: 20%;
   position: fixed;
   text-align: center;
 }
 .info{
-  margin-top:370px;
-  left: 12%;
-  position: fixed;
-  text-align: center;
+  margin-top:40px;
 }
-.top{
-  margin-top: 430px!important;
-}
+
 .user-icon{
   width: 100px;
 }
-
 .video{
   width:100%;
   height: 350px;
 }
 .success {
   color: #4FA2DB;
+}
+
+.card-body li{
+  text-align: left;
+  padding: 10px;
 }

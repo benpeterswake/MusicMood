@@ -3,20 +3,18 @@ class Posts extends React.Component{
         super(props)
         this.state = {
             editPost: null,
-            showProfile: true,
             posts: [],
             post: {},
             total:0
         }
-
         this.toggleState = this.toggleState.bind(this)
         this.getPosts = this.getPosts.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
         this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
         this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
+        this.handleUserUpdate = this.handleUserUpdate.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.closeEdit = this.closeEdit.bind(this)
-        this.toggleProfile = this.toggleProfile.bind(this)
     }
 
     componentDidMount(){
@@ -28,12 +26,6 @@ class Posts extends React.Component{
             editPost: index,
             post: post
         })
-    }
-
-    toggleProfile(){
-      this.setState({
-          showProfile: !this.state.showProfile
-      })
     }
 
     closeEdit(x){
@@ -51,8 +43,6 @@ class Posts extends React.Component{
         })
         let total = 0
         for(let i=0; i<data.length; i++){
-          console.log(data[i].user_id);
-          console.log(Cookies.get('user_id'));
           if(data[i].user_id == Cookies.get('user_id')){
             total++
           }else{
@@ -105,6 +95,26 @@ class Posts extends React.Component{
         }).catch(error => console.log(error))
     }
 
+    handleUserUpdate(post){
+      let data = {
+        id: Cookies.get('user_id'),
+        username: post.user
+      }
+      fetch('/users', {
+          body: JSON.stringify(data),
+          method: 'PUT',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          }
+      }).then(updatedUser  => {
+          return updatedUser.json()
+      }).then(jsonedUser => {
+          Cookies.remove("username")
+          Cookies.set("username", jsonedUser.user.username)
+      }).catch(error => console.log(error))
+    }
+
     deletePost (post, index) {
       console.log('clicked');
       fetch('/posts/' + post.id, {
@@ -123,7 +133,8 @@ class Posts extends React.Component{
     render(){
         return (
             <div>
-                <User toggleProfile={this.toggleProfile} showProfile={this.state.showProfile} total={this.state.total} />
+                <User handleUserUpdate={this.handleUserUpdate} toggleProfile={this.toggleProfile} showProfile={this.state.showProfile} total={this.state.total} />
+                <Trend />
                 <PostForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
                 <PostsList
                 getPosts={this.getPosts}

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   put '/posts/:id', to: 'posts#update'
 
   get '/users', to: 'users#index'
+  put '/users', to: 'users#update'
   post '/login', to: 'sessions#login'
   post '/signup', to: 'users#create'
 

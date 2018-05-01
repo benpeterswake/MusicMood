@@ -34,7 +34,7 @@ class Login extends React.Component {
             <div className="card">
               <form onSubmit={this.handleSubmit}>
                 <div className="card-body">
-                  {this.props.message === true?<div className="text-center success">User successfully created!</div>: null }
+                  {this.props.message === true?<div className="text-center success">Account successfully created!</div>: null }
                   {this.props.error === true?<div className="text-center error">Invalid username or password!</div>: null }
                     <div className="form-group font-weight-bold login-head">Log In</div>
                     <div className="form-group">

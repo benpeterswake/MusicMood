@@ -3,10 +3,20 @@ class User extends React.Component{
     super(props)
     this.state = {
       user: Cookies.get('username'),
-      avatar: 'https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png',
-      match: null
+      avatar: 'https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-512.png',
+      match: null,
+      showProfile: true,
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.toggleProfile = this.toggleProfile.bind(this)
+  }
+
+  toggleProfile(){
+    this.setState({
+        showProfile: !this.state.showProfile,
+        user: Cookies.get('username')
+    })
   }
 
   handleChange(event){
@@ -35,37 +45,50 @@ class User extends React.Component{
     })
   }
 
+  handleSubmit(event){
+    if(this.state.match){
+      console.log('username already exists');
+    }else{
+      event.preventDefault()
+      this.props.handleUserUpdate(this.state)
+      this.setState({
+        showProfile:true
+      });
+    }
+
+  }
+
   render(){
    return(
-     <div className="container">
-       <div className="col-lg-2 user">
+     <div className="container user">
+       <div className="col-lg-12">
          <div className="card" id="user-card">
            <div className="card-header user-card-top">
             <img src={this.state.avatar}
             className="user-icon" />
            </div>
            {
-             this.props.showProfile === true?
+             this.state.showProfile === true?
              <div className="card-body">
+                 <h4 className="small">Welcome</h4>
                  <h4>{this.state.user}</h4>
-                 <button onClick={this.props.toggleProfile} className="btn btn-outline-secondary">Edit Profile</button>
+                 <button onClick={this.toggleProfile} className="btn btn-outline-secondary">Edit Profile</button>
               </div>
                :
              <div className="card-body">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                   <label>Username</label>
                   {this.state.match === true?<div class="error"><i class="fas fa-times-circle"></i> Username already exists</div>: null}
                   {this.state.match === false?<div class="available"><i class="fas fa-check-circle"></i> Username is available</div>: null}
                   <input type="text" id="user" onChange={this.handleChange} value={this.state.user} required/>
-                  <button onClick={this.props.toggleProfile} className="cancel btn btn-outline-secondary">Cancel</button>
+                  {this.state.match === false?<button type="submit" className="cancel btn btn-primary">Submit</button>: null}
+                  <button onClick={this.toggleProfile} className="cancel left btn btn-outline-secondary">Cancel</button>
                 </form>
              </div>
            }
          </div>
        </div>
-           {
-             this.props.showProfile === true?
-           <div className="col-lg-2 info">
+           <div className="col-lg-12 info">
              <div className="card">
                <div className="card-header user-card-top">
                 <h1>{this.props.total}</h1>
@@ -75,18 +98,6 @@ class User extends React.Component{
                </div>
              </div>
            </div>
-           :
-           <div className="col-lg-2 info top">
-             <div className="card">
-               <div className="card-header user-card-top">
-                <h1>{this.props.total}</h1>
-               </div>
-               <div className="card-body">
-                  <h4>Posts</h4>
-               </div>
-             </div>
-           </div>
-          }
      </div>
    )
   }
