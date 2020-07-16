@@ -1,0 +1,95 @@
+#home {
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+#left-home {
+  background-color: #343A40;
+  margin-right: -60px;
+}
+
+#right-home {
+  background-color: #ffffff;
+}
+
+#login-text {
+  font-weight: bold;
+}
+
+#login-link {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+#intro {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 70px;
+  color: white;
+}
+
+#signup-form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+#signup-card {
+  border: none;
+  background-color: #ffffff;
+}
+
+/* #logo {
+  transform: rotate(20deg);
+} */
+
+#sign-up-text {
+  text-align: left;
+  font-weight: bold;
+  background-color: #ffffff;
+  border: none;
+}
+
+.username > .em {
+  margin-left: 5px;
+}
+
+.logo{
+  margin-top: -60px;
+}
+
+#signup-header {
+  background-color: #ffffff;
+  border: none;
+}
+
+#username {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#welcome {
+  font-weight: bolder;
+  font-size: 25px;
+  line-height: 35px;
+}
+
+#submit-btn {
+  margin-top: 20px;
+}
+
+#post-header {
+  background-color: #4DA2F3;
+  color: white;
+}
+
+#fa-minus-square {
+  background-color: #000000;
+}

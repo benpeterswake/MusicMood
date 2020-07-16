@@ -1,6 +1,6 @@
 
 body{
-  background: #FAFAFA;
+  background: #E8EAED;
 }
 
 .post-image{
@@ -24,13 +24,14 @@ body{
 }
 
 #PostList .card {
-  margin: 5px 0px 0px 0px;
+  margin: 25px 0px 0px 0px;
 }
 
 
 #active {
-  background-color: #54A7FF;
-  padding:20px 10px 20px 10px;
+  background-color: white;
+  border-radius: 50%;
+  padding:12px 10px 12px 10px;
 }
 
 .postForm{
@@ -44,12 +45,12 @@ body{
 
 #newsfeed {
   border-radius: 0;
-  margin: 0 auto;
   border-bottom: 1px solid #7092be;
+  margin-bottom: 20px;
 }
 
 .username {
-  font-size: .8em;
+  font-size: 1em;
 }
 
 #sidebar {
@@ -66,7 +67,6 @@ body{
 }
 
 .btn {
-  margin: 3px;
   cursor: pointer;
 }
 
@@ -76,9 +76,7 @@ body{
 
 #PostsList .card-header {
   margin-top: 0px;
-  border-bottom: 1px solid #7092be;
-
-  background-color: #ffffff;
+  background-color: white;
 }
 
 .postForm{
@@ -96,6 +94,27 @@ span {
   cursor: pointer;
   margin-top: 8px;
   margin-right: 5px;
+  font-size: 14px;
+  background-color: #4DA2F3;
+  border: none;
+  color: white;
+}
+
+.songTitle{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.videoTitle{
+  padding-bottom: 15px;
+  font-size: 20px;
+}
+
+.pencil {
+  font-size: 15px;
+  color: white;
 }
 
 .song {
@@ -114,19 +133,15 @@ span {
   margin-top: 25px;
 }
 
+.footer a{
+  color: #54A7FF;
+}
+
+
 #PostList {
   padding: 0px;
   margin-top: -10px;
 }
-
-#sign-up-text {
-  text-align: center;
-}
-
-#signup-form {
-  margin-top: 100px;
-}
-
 
 
 @media only screen and (max-width: 1000px) {
